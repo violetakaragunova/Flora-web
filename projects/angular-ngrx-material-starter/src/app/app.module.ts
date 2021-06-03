@@ -6,6 +6,7 @@ import { CoreModule } from './core/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
+import { JwtInterceptor } from './interceptors/JwtInterceptor';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { AppComponent } from './app/app.component';
     AppRoutingModule
   ],
   declarations: [AppComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [JwtInterceptor]
 })
 export class AppModule {}

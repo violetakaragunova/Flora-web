@@ -8,11 +8,15 @@ import { AccountService } from '../account.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgotPasswordComponent implements OnInit {
-  model: any;
+  model: any = {};
 
   constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {}
 
-  forgotPassword() {}
+  forgotPassword() {
+    this.accountService.forgotPassword(this.model).subscribe((result) => {
+      console.log(result);
+    });
+  }
 }
