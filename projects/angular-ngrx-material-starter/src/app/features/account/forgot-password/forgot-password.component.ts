@@ -10,9 +10,9 @@ import { AccountService } from '../account.service';
 export class ForgotPasswordComponent implements OnInit {
   model: any = {};
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   forgotPassword() {
     this.accountService.forgotPassword(this.model).subscribe((result) => {

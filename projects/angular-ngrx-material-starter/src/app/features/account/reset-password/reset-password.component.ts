@@ -8,9 +8,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class ResetPasswordComponent implements OnInit {
   model: any;
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  resetPassword() {}
+  resetPassword() { }
 }
