@@ -1,10 +1,12 @@
 <div [class]="'theme-wrapper ' + (theme$ | async)">
-  <mat-sidenav-container #sidenav mode="push">
+  <mat-sidenav-container>
     <div class="wrapper">
       <div class="toolbar">
         <mat-toolbar color="primary">
+          <a href="http://localhost:4200/#/account">
           <img [src]="logo" [alt]="logo" width="50" height="50" />
-          <span class="ml-3" style="color: white;">Plant Tracker</span>
+          </a>
+          <span class="ml-3" style="color: white; font-weight: bold; font-variant: small-caps;">Plant Tracker</span>
           <mat-list>
             <mat-list-item>
               <a mat-list-item routerLink="/users" *ngIf="accountService.currentUser$ | async"
@@ -16,7 +18,7 @@
           </mat-list>
         </mat-toolbar>
       </div>
-      <div class="content">
+      <div class="content bg">
         <router-outlet #o="outlet"></router-outlet>
       </div>
     </div>

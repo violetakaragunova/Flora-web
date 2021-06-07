@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'anms-log-in',
@@ -9,19 +11,32 @@ import { AccountService } from '../account.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LogInComponent implements OnInit {
-  model: any = {};
+  loginForm: FormGroup;
 
-  constructor(public accountService: AccountService, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    public accountService: AccountService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.checkCurrentUser();
+    this.loginForm = this.formBuilder.group({
+      username: [''],
+      password: ['']
+    });
   }
 
   login() {
-    this.accountService.login(this.model).subscribe((response) => {
-      console.log(response);
-      this.router.navigateByUrl('/plants');
-    });
+    this.accountService.login(this.loginForm.value).subscribe(
+      (response) => {
+        this.router.navigateByUrl('/plants');
+      },
+      (error) => {
+        this.toastr.error(error);
+      }
+    );
   }
 
   checkCurrentUser() {

@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app/app.component';
 import { JwtInterceptor } from './interceptors/JwtInterceptor';
 
@@ -18,7 +19,10 @@ import { JwtInterceptor } from './interceptors/JwtInterceptor';
     CoreModule,
 
     // app
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center'
+    })
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

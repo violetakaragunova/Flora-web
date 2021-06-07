@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { Observable, ReplaySubject } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { selectEffectiveTheme } from '../core/core.module';
 import { AccountService } from '../features/account/account.service';
 import { User } from '../models/user';
@@ -14,9 +13,14 @@ import { User } from '../models/user';
 })
 export class AppComponent implements OnInit {
   logo = require('../../assets/logoPlantTracker.png').default;
+  backgorund = require('../../assets/background.jpg');
   theme$: Observable<string>;
 
-  constructor(private store: Store, public accountService: AccountService) {}
+  constructor(
+    private store: Store,
+    public accountService: AccountService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
@@ -33,6 +37,6 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
-    window.location.reload();
+    this.router.navigateByUrl('');
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AccountService } from '../account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'anms-forgot-password',
@@ -10,13 +11,17 @@ import { AccountService } from '../account.service';
 export class ForgotPasswordComponent implements OnInit {
   model: any = {};
 
-  constructor(private accountService: AccountService) { }
+  constructor(
+    private accountService: AccountService,
+    private toastr: ToastrService
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   forgotPassword() {
     this.accountService.forgotPassword(this.model).subscribe((result) => {
       console.log(result);
+      this.toastr.success('Link was sent successfully!');
     });
   }
 }

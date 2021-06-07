@@ -1,8 +1,20 @@
 @import '../../styles-variables';
+@import '~mdb-ui-kit/css/mdb.min.css';
 
 .theme-wrapper {
   height: 100%;
   width: 100%;
+}
+
+div.bg {
+  /* The image used */
+  background-image: url('https://wallpapercave.com/wp/wp7392083.jpg');
+  /* Full height */
+  height: auto;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 mat-sidenav-container {

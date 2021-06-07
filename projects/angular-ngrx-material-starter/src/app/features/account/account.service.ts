@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { User } from '../../models/user';
 
 @Injectable({
@@ -21,13 +21,24 @@ export class AccountService {
         if (user) {
           this.setCurrentUser(user);
         }
-        console.log(user);
+      })
+    );
+  }
+
+  register(model: any) {
+    return this.http.post(this.ApiUrl + 'account/register', model).pipe(
+      map((response: User) => {
+        const user = response;
+        if (user) {
+          this.setCurrentUser(user);
+        }
       })
     );
   }
 
   logout() {
     localStorage.removeItem('user');
+    this.currentUserSource.next(null);
   }
 
   forgotPassword(model: any) {
