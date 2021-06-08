@@ -13,14 +13,13 @@ import { User } from '../models/user';
 })
 export class AppComponent implements OnInit {
   logo = require('../../assets/logoPlantTracker.png').default;
-  backgorund = require('../../assets/background.jpg');
   theme$: Observable<string>;
 
   constructor(
     private store: Store,
     public accountService: AccountService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));

@@ -14,9 +14,9 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   forgotPassword() {
     this.accountService.forgotPassword(this.model).subscribe((result) => {
