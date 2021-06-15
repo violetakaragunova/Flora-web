@@ -15,18 +15,15 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { UsersItemComponent } from './users-item/users-item.component';
 import { UsersDetailsComponent } from './users-details/users-details.component';
 import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
-  declarations: [
-    UsersItemComponent, 
-    UsersDetailsComponent, 
-    UsersListComponent],
+  declarations: [UsersItemComponent, UsersDetailsComponent, UsersListComponent],
   imports: [
-    CommonModule, 
+    CommonModule,
     UsersRoutingModule,
     FormsModule,
     ReactiveFormsModule,
