@@ -1,0 +1,35 @@
+<div>
+    <div class="container">
+        <mat-nav-list>
+            <mat-list-item mat-list-item>
+                <span matLine class="green">
+                    <h3>Users</h3>
+                </span>
+                <button mat-raised-button color="primary">Add User</button>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-divider></mat-divider>
+        <div class="basic-container">
+            <mat-nav-list *ngIf="users$">
+                <mat-list-item (click)="menuTrigger.openMenu()" *ngFor="let user of users$ | async">
+                    <mat-icon mat-list-icon>perm_identity</mat-icon>
+                    <div mat-line>
+                        {{ user.userName }}
+                    </div>
+                    <p mat-line>
+                        {{ user.email }}
+                    </p>
+                    <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>View user</button>
+                    <button mat-menu-item>Edit user</button>
+                    <button mat-menu-item>Delete user</button>
+                </mat-menu>
+            </mat-nav-list>
+        </div>
+    </div>
+</div>

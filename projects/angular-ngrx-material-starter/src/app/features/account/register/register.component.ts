@@ -10,7 +10,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  model: any = {};
   registerForm: FormGroup;
   submitted = false;
   constructor(
@@ -45,7 +44,7 @@ export class RegisterComponent implements OnInit {
     }
     this.accountService.register(this.registerForm.value).subscribe(
       (response) => {
-        this.router.navigateByUrl('/plants');
+        this.router.navigateByUrl('/users');
       },
       (error) => {
         this.toastr.error(error);

@@ -19,16 +19,15 @@ export class AppComponent implements OnInit {
     private store: Store,
     public accountService: AccountService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
-    console.log(this.accountService.currentUser$);
     this.setCurrentUser();
   }
 
   setCurrentUser() {
-    const user: User = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       this.accountService.setCurrentUser(user);
     }

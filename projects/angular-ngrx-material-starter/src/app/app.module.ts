@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app/app.component';
 import { JwtInterceptor } from './interceptors/JwtInterceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -26,6 +27,12 @@ import { JwtInterceptor } from './interceptors/JwtInterceptor';
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  providers: [JwtInterceptor]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ]
 })
 export class AppModule {}

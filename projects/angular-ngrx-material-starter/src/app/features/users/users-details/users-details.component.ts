@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'anms-list-users',
-  templateUrl: './list-users.component.html',
-  styleUrls: ['./list-users.component.scss'],
+  selector: 'anms-users-details',
+  templateUrl: './users-details.component.html',
+  styleUrls: ['./users-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListUsersComponent implements OnInit {
+export class UsersDetailsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

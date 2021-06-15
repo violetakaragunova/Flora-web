@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListUsersComponent } from './list-users/list-users.component';
+import { AdminGuard } from '../../guards/admin.guard';
+import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ListUsersComponent,
+    component: UsersListComponent,
+    canActivate: [AdminGuard],
     data: { title: 'anms.users.list' }
   }
 ];

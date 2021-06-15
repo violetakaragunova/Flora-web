@@ -1,26 +1,23 @@
-<div [class]="'theme-wrapper ' + (theme$ | async)">
-  <mat-sidenav-container>
-    <div class="wrapper">
-      <div class="toolbar">
-        <mat-toolbar color="primary">
-          <a href="http://localhost:4200/#/account">
-            <img [src]="logo" [alt]="logo" width="50" height="50" />
-          </a>
-          <span class="ml-3" style="color: white; font-weight: bold; font-variant: small-caps;">Plant Tracker</span>
-          <mat-list>
-            <mat-list-item>
-              <a mat-list-item routerLink="/users" *ngIf="accountService.currentUser$ | async"
-                style="color: white;">Users</a>
-              <a mat-list-item routerLink="/plants" *ngIf="accountService.currentUser$ | async"
-                style="color: white;">Plants</a>
-              <button *ngIf="accountService.currentUser$ | async" mat-icon-button (click)="logout()">Log out</button>
-            </mat-list-item>
-          </mat-list>
-        </mat-toolbar>
-      </div>
-      <div class="content">
-        <router-outlet #o="outlet"></router-outlet>
-      </div>
-    </div>
-  </mat-sidenav-container>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <mat-toolbar style="color: #689F38; background-color: #F5F5F5;">
+      <span class="ml-3" style="font-weight: bold; font-variant: small-caps;">Plant Tracker</span>
+      <span class="toolbar-spacer"></span>
+      <mat-list>
+        <mat-list-item>
+          <a style="color: #689F38" mat-list-item routerLink="/users" *ngIf="accountService.currentUser$ | async" routerLinkActive="active">Users</a>
+          <a style="color: #689F38" mat-list-item routerLink="/plants" *ngIf="accountService.currentUser$ | async" routerLinkActive="active">Plants</a>
+          Welcome
+          <button *ngIf="accountService.currentUser$ | async" mat-icon-button #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+         </button>
+        </mat-list-item>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>View profile</button>
+          <button (click)="logout()" mat-menu-item>Log out</button>
+        </mat-menu>
+      </mat-list>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

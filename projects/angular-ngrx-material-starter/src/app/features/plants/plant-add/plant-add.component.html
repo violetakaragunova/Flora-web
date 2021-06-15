@@ -1,0 +1,35 @@
+<div class="bg">
+    <div class="center">
+        <mat-card>
+            <mat-card-title>Add Plant</mat-card-title>
+            <mat-card-content>
+                <form [formGroup]="AddForm" (ngSubmit)="addPlant()">
+                    <div class="form-group mt-4">
+                        <input type="text" formControlName="name" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name"/>
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <input type="text" formControlName="description" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.description.errors }" placeholder="Description"/>
+                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                            <div *ngIf="f.description.errors.required">Description is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <input type="text" formControlName="roomId" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.roomId.errors }" placeholder="Room Id"/>
+                        <div *ngIf="submitted && f.roomId.errors" class="invalid-feedback">
+                            <div *ngIf="f.roomId.errors.required">RoomId is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <button mat-raised-button color="primary" type="submit">Add Plant</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    </div>

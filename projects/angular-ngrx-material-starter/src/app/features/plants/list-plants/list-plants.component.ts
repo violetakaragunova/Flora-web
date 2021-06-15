@@ -1,4 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Plant } from '../../../models/plant';
+import { PlantService } from '../plant.service';
 
 @Component({
   selector: 'anms-list-plants',
@@ -7,7 +10,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListPlantsComponent implements OnInit {
-  constructor() {}
+  plants: BehaviorSubject<Plant[]> = new BehaviorSubject<Plant[]>(null);
+  constructor(private plantService: PlantService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.plantService.getPlants().subscribe((data: Plant[]) => {
+      this.plants.next(data);
+      console.log(this.plants);
+    });
+  }
 }
