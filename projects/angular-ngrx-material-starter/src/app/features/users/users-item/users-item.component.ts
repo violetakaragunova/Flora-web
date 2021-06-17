@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -7,6 +8,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersItemComponent implements OnInit {
+  @Input() user;
   constructor() {}
 
   ngOnInit(): void {}

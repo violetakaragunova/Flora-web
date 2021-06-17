@@ -25,7 +25,8 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-    data: { title: 'anms.register' }
+    data: { title: 'anms.register' },
+    canActivate: [AdminGuard]
   }
 ];
 

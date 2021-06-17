@@ -14,7 +14,7 @@ import { AccountService } from '../features/account/account.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   constructor(
     private accountService: AccountService,
     private toastr: ToastrService,
@@ -24,11 +24,8 @@ export class AdminGuard implements CanActivate {
   canActivate(): Observable<boolean> {
     return this.accountService.currentUser$.pipe(
       map((user) => {
-        if (user.roles.includes('Admin')) {
-          return true;
-        }
-        this.toastr.error('You cannot enter this area');
-        this.router.navigateByUrl('/plant');
+        if (user) return true;
+        this.router.navigateByUrl('/');
       })
     );
   }

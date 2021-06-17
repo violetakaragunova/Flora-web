@@ -21,6 +21,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+import { ToastrModule } from 'ngx-toastr';
 
 import {
   FontAwesomeModule,
@@ -50,6 +53,7 @@ import { faMediumM, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { BigInputComponent } from './big-input/big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action/big-input-action.component';
 import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   imports: [
@@ -72,9 +76,11 @@ import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
     MatTooltipModule,
     MatSnackBarModule,
     MatSlideToggleModule,
+    MatSidenavModule,
     MatDividerModule,
-
-    FontAwesomeModule
+    MatGridListModule,
+    FontAwesomeModule,
+    ToastrModule
   ],
   declarations: [
     BigInputComponent,
@@ -106,6 +112,9 @@ import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatGridListModule,
+    MatSidenavModule,
+    ToastrModule,
 
     FontAwesomeModule,
 

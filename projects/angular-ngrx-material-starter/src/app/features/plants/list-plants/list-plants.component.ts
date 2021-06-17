@@ -11,6 +11,8 @@ import { PlantService } from '../plant.service';
 })
 export class ListPlantsComponent implements OnInit {
   plants: BehaviorSubject<Plant[]> = new BehaviorSubject<Plant[]>(null);
+  events: string[] = [];
+  opened: boolean;
   constructor(private plantService: PlantService) {}
 
   ngOnInit(): void {
@@ -18,5 +20,9 @@ export class ListPlantsComponent implements OnInit {
       this.plants.next(data);
       console.log(this.plants);
     });
+  }
+
+  onSelectedPlant(plant) {
+    this.plantService.currentSelectedPlant.next(plant);
   }
 }

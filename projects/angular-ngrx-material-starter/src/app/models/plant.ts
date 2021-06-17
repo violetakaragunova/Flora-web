@@ -1,5 +1,10 @@
+import { Photo } from './photo';
+
 export interface Plant {
-    name: string;
-    description: string;
-    roomID: number;
+  id: number;
+  name: string;
+  description: string;
+  roomId: number;
+  photoUrl: string;
+  photos: Photo[];
 }

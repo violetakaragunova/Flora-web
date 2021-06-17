@@ -1,23 +1,22 @@
 <div class="container mt-5">
     <div class="row">
-        <div class="col align-self-center">
-            <mat-nav-list>
-                <mat-list-item mat-list-item>
-                    <span matLine class="green">
-                        <h3>Plants</h3>
-                    </span>
-                    <button routerLink="/plants/add" mat-raised-button color="primary">Add Plant</button>
-                </mat-list-item>
-                <mat-list-item *ngFor="let plant of plants | async">
-                        <div mat-line>
-                            {{ plant.name }}
-                        </div>
-                        <p mat-line>
-                            {{ plant.description }} , {{plant.roomId}}
-                        </p>
-                        <mat-divider></mat-divider>
-                </mat-list-item>
-            </mat-nav-list>
+        <div class="col">
+            <span matLine class="green">
+                <h3>Plants</h3>
+            </span>
+        </div>
+        <div class="col-auto">
+            <button routerLink="/plants/add" mat-raised-button color="primary">Add Plant</button>
         </div>
     </div>
+    <mat-drawer-container>
+        <mat-nav-list>
+            <anms-plant-item (click)="onSelectedPlant(plant); sidenav.toggle();"  *ngFor="let plant of plants | async" [plant]="plant">
+            </anms-plant-item>
+        </mat-nav-list>
+        <mat-drawer #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+            (closed)="events.push('close!')" position="end">
+            <anms-plant-details></anms-plant-details>
+        </mat-drawer>
+    </mat-drawer-container>
 </div>

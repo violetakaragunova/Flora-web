@@ -1,1 +1,18 @@
-<p>users-item works!</p>
+<mat-list-item style="height: 70px;">
+    <mat-divider></mat-divider>
+    <mat-icon class="mt-4" mat-list-icon style="height: 50px;">perm_identity</mat-icon>
+    <div mat-line>
+        {{ user.userName }}
+    </div>
+    <p mat-line>
+        {{ user.email }}
+    </p>
+    <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>View user</button>
+        <button mat-menu-item>Edit user</button>
+        <button mat-menu-item>Delete user</button>
+    </mat-menu>
+</mat-list-item>

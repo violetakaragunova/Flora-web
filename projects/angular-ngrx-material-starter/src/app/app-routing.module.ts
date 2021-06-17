@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -20,32 +21,12 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () =>
-      import('./features/users/users.module').then((m) => m.UsersModule)
-  },
-  {
-    path: 'feature-list',
-    loadChildren: () =>
-      import('./features/feature-list/feature-list.module').then(
-        (m) => m.FeatureListModule
-      )
-  },
-  {
-    path: 'settings',
-    loadChildren: () =>
-      import('./features/settings/settings.module').then(
-        (m) => m.SettingsModule
-      )
-  },
-  {
-    path: 'examples',
-    loadChildren: () =>
-      import('./features/examples/examples.module').then(
-        (m) => m.ExamplesModule
-      )
+      import('./features/users/users.module').then((m) => m.UsersModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
-    redirectTo: 'about'
+    redirectTo: 'account'
   }
 ];
 
