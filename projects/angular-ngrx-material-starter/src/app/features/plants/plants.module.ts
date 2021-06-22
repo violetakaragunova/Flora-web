@@ -7,14 +7,18 @@ import { PlantAddComponent } from './plant-add/plant-add.component';
 import { PlantItemComponent } from './plant-item/plant-item.component';
 import { PlantDetailsComponent } from './plant-details/plant-details.component';
 import { SharedModule } from '../../shared/shared.module';
-
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { PlantNeedComponent } from './plant-need/plant-need.component';
+import { PlantNeedAddComponent } from './plant-need-add/plant-need-add.component';
 @NgModule({
   declarations: [
     ListPlantsComponent,
     PlantAddComponent,
     PlantItemComponent,
-    PlantDetailsComponent
+    PlantDetailsComponent,
+    PlantNeedComponent,
+    PlantNeedAddComponent
   ],
-  imports: [CommonModule, PlantsRoutingModule, SharedModule]
+  imports: [CommonModule, PlantsRoutingModule, SharedModule, NgxGalleryModule]
 })
 export class PlantsModule {}

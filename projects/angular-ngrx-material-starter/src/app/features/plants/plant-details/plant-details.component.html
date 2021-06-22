@@ -1,5 +1,36 @@
-<div *ngIf="plant">
-    <h3 style="color: #4a934a; text-align: center;">{{plant.name}}</h3>
-    <img style="width: 400px; height: 400px;" src="{{plant.photoUrl}}">
-    <h4 style="color: #4a934a; text-align: center;">{{plant.description}}</h4>
-</div>
+<mat-card style="margin:1em; max-width: auto;">
+    <form [formGroup]="AddForm" class="example-form">
+        <mat-card-header>
+            <img *ngIf="!isAddMode" mat-card-avatar src="{{plant?.photoUrl}}">
+            <img *ngIf="isAddMode" mat-card-avatar
+                src="https://thumbs.dreamstime.com/b/black-silhouette-potted-plant-white-background-element-poster-animation-etc-203963346.jpg">
+            <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <mat-card-title><input type="text" matInput formControlName="name" placeholder="Name"></mat-card-title>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Room Number</mat-label>
+                <mat-card-title><input type="text" matInput formControlName="roomId" placeholder="Room Number">
+                </mat-card-title>
+            </mat-form-field>
+        </mat-card-header>
+        <img *ngIf="isAddMode" mat-card-image
+            src="https://thumbs.dreamstime.com/b/black-silhouette-potted-plant-white-background-element-poster-animation-etc-203963346.jpg">
+        <img mat-card-image src="{{plant?.photoUrl}}">
+        <mat-card-content>
+            <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <input type="text" matInput formControlName="description" placeholder="Description">
+            </mat-form-field>
+        </mat-card-content>
+        <div *ngIf="!isAddMode">
+            Plant Needs
+            <anms-plant-need [plant]="plant"></anms-plant-need><br><br>
+        </div>
+        <div class="form-element">
+            <button (click)="save()" mat-raised-button color="primary" type="submit" class="button"
+                [disabled]="!(AddForm.valid && AddForm.dirty)">Save</button>
+            <button *ngIf="!isAddMode" (click)="deletePlant();" mat-raised-button color="primary">Delete Plant</button>
+        </div>
+    </form>
+</mat-card>

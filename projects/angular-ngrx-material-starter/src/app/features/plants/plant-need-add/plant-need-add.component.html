@@ -1,0 +1,42 @@
+<form [formGroup]="AddForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Needs</mat-label>
+        <mat-select style="height: 5px;" formControlName="needId" name="need">
+            <mat-option *ngFor="let need of needs | async" [value]="need.id">{{need.name}}</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>From</mat-label>
+        <mat-select style="height: 5px;" formControlName="monthFrom" name="monthFrom">
+            <mat-option *ngFor="let month of months | async" [value]="month.id">{{month.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Until</mat-label>
+        <mat-select style="height: 5px;" formControlName="monthTo" name="monthTo">
+            <mat-option *ngFor="let month of months | async" [value]="month.id">{{month.name}}</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+        <mat-label>Quantity</mat-label>
+        <input formControlName="quantity" matInput #input maxlength="10" placeholder="Ex. Nougat">
+        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+        <mat-label>Frequency</mat-label>
+        <input formControlName="frequency" matInput #input maxlength="10" placeholder="Ex. Nougat">
+        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <mat-select style="height: 5px;" formControlName="frequencyType" name="type">
+            <mat-option value="Daily">Daily</mat-option>
+            <mat-option value="Weekly">Weekly</mat-option>
+            <mat-option value="Monthly">Monthly</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="form-element">
+        <button (click)="save()" mat-raised-button color="primary" type="submit" class="button"
+            [disabled]="!(AddForm.valid && AddForm.dirty)">Save</button>
+    </div>
+</form>

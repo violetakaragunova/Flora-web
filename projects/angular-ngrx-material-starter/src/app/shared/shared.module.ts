@@ -22,6 +22,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table'  
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -80,6 +81,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatDividerModule,
     MatGridListModule,
     FontAwesomeModule,
+    MatTableModule,
     ToastrModule
   ],
   declarations: [
@@ -115,6 +117,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatGridListModule,
     MatSidenavModule,
     ToastrModule,
+    MatTableModule,
 
     FontAwesomeModule,
 

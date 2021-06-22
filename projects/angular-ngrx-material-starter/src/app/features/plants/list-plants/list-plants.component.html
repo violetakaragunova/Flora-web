@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5" style="height: auto">
     <div class="row">
         <div class="col">
             <span matLine class="green">
@@ -6,16 +6,16 @@
             </span>
         </div>
         <div class="col-auto">
-            <button routerLink="/plants/add" mat-raised-button color="primary">Add Plant</button>
+            <button (click)="deletePlant(); sidenav.toggle();" mat-raised-button color="primary">Add Plant</button>
         </div>
     </div>
-    <mat-drawer-container>
+    <mat-drawer-container style="height: auto;">
         <mat-nav-list>
             <anms-plant-item (click)="onSelectedPlant(plant); sidenav.toggle();"  *ngFor="let plant of plants | async" [plant]="plant">
             </anms-plant-item>
         </mat-nav-list>
-        <mat-drawer #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-            (closed)="events.push('close!')" position="end">
+        <mat-drawer style="width: 50%;" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+            (closed)="events.push('close!');" position="end">
             <anms-plant-details></anms-plant-details>
         </mat-drawer>
     </mat-drawer-container>

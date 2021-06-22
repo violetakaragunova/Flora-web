@@ -25,4 +25,8 @@ export class ListPlantsComponent implements OnInit {
   onSelectedPlant(plant) {
     this.plantService.currentSelectedPlant.next(plant);
   }
+
+  deletePlant(){
+    this.plantService.currentSelectedPlant.next(null);
+  }
 }

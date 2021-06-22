@@ -1,4 +1,5 @@
 import { Photo } from './photo';
+import { PlantNeed } from './plantNeed';
 
 export interface Plant {
   id: number;
@@ -7,4 +8,5 @@ export interface Plant {
   roomId: number;
   photoUrl: string;
   photos: Photo[];
+  plantNeeds: PlantNeed[];
 }
