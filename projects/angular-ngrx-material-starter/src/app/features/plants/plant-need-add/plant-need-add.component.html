@@ -17,15 +17,13 @@
             <mat-option *ngFor="let month of months | async" [value]="month.id">{{month.name}}</mat-option>
         </mat-select>
     </mat-form-field><br>
-    <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+    <mat-form-field appearance="fill">
         <mat-label>Quantity</mat-label>
-        <input formControlName="quantity" matInput #input maxlength="10" placeholder="Ex. Nougat">
-        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+        <input formControlName="quantity" matInput #input maxlength="10" placeholder="Quantity">
     </mat-form-field>
-    <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+    <mat-form-field appearance="fill">
         <mat-label>Frequency</mat-label>
-        <input formControlName="frequency" matInput #input maxlength="10" placeholder="Ex. Nougat">
-        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+        <input formControlName="frequency" matInput #input maxlength="10" placeholder="Frequency">
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Type</mat-label>
