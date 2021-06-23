@@ -5,6 +5,7 @@
 @import 'styles-reset';
 
 @import '~@angular/material/theming';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 @include mat-core();
 

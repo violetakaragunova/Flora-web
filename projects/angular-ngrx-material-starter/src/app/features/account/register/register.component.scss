@@ -1,0 +1,35 @@
+mat-card {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
+}
+
+div.center {
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  margin-top: -50px;
+  margin-left: -50px;
+  height: 300px;
+  width: 300px;
+}
+
+div.invalid-feedback {
+  color: red !important;
+}
+
+div.bg{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  /* The image used */
+  background-image: url('https://wallpapercave.com/wp/wp7392083.jpg');
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

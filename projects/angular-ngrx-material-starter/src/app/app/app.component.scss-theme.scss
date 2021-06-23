@@ -7,6 +7,10 @@
 
   mat-sidenav-container {
     mat-toolbar {
+      background-color: forestgreen;
+      .example-spacer {
+        flex: 1 1 auto;
+      }
       button {
         &.active {
           color: mat-color($accent, default-contrast);

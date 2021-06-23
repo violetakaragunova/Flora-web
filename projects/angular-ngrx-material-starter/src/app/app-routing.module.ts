@@ -1,41 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'about',
+    redirectTo: 'account',
     pathMatch: 'full'
   },
   {
-    path: 'about',
+    path: 'account',
     loadChildren: () =>
-      import('./features/about/about.module').then((m) => m.AboutModule)
+      import('./features/account/account.module').then((m) => m.AccountModule)
   },
   {
-    path: 'feature-list',
+    path: 'plants',
     loadChildren: () =>
-      import('./features/feature-list/feature-list.module').then(
-        (m) => m.FeatureListModule
-      )
+      import('./features/plants/plants.module').then((m) => m.PlantsModule)
   },
   {
-    path: 'settings',
+    path: 'users',
     loadChildren: () =>
-      import('./features/settings/settings.module').then(
-        (m) => m.SettingsModule
-      )
-  },
-  {
-    path: 'examples',
-    loadChildren: () =>
-      import('./features/examples/examples.module').then(
-        (m) => m.ExamplesModule
-      )
+      import('./features/users/users.module').then((m) => m.UsersModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
-    redirectTo: 'about'
+    redirectTo: 'account'
   }
 ];
 
