@@ -9,18 +9,6 @@ div.container {
   outline-style: round($number: 0.5);
 }
 
-div.bg {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  /* The image used */
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.4)
-    ),
-    url('../../../../assets/background.jpg');
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+button {
+  background-color: #85bea6;
 }

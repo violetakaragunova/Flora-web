@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 import { Plant } from '../../models/plant';
 import { PlantNeed } from '../../models/plantNeed';
 import { User } from '../../models/user';
@@ -11,7 +12,7 @@ import { AccountService } from '../account/account.service';
   providedIn: 'root'
 })
 export class PlantService {
-  ApiUrl = 'https://localhost:44366/api/';
+  ApiUrl = environment.apiUrl;
   user: User;
   plants: Plant[];
   currentSelectedPlant: BehaviorSubject<Plant> = new BehaviorSubject<Plant>(
@@ -45,7 +46,7 @@ export class PlantService {
   }
 
   addPlant(model: any) {
-    model.id=0;
+    model.id = 0;
     return this.http.post(this.ApiUrl + 'plant/add', model).pipe(
       map((response: Plant) => {
         return response;
@@ -54,16 +55,14 @@ export class PlantService {
   }
 
   deletePlant(id: number) {
-    return this.http.delete(this.ApiUrl+'plant/'+id);
+    return this.http.delete(this.ApiUrl + 'plant/' + id);
   }
 
-  updatePlant(model: any){
+  updatePlant(model: any) {
     return this.http.post(this.ApiUrl + 'plant/update', model).pipe(
       map((response: Plant) => {
         return response;
       })
     );
   }
-
-  
 }

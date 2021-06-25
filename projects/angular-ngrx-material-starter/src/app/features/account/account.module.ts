@@ -14,6 +14,7 @@ import { SharedModule } from '../../shared/shared.module';
     ResetPasswordComponent,
     RegisterComponent
   ],
-  imports: [CommonModule, AccountRoutingModule, SharedModule]
+  imports: [CommonModule, AccountRoutingModule, SharedModule],
+  exports: [RegisterComponent]
 })
 export class AccountModule {}

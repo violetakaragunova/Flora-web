@@ -16,15 +16,13 @@ import { UserService } from '../user.service';
 })
 export class UsersListComponent implements OnInit {
   users$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>(null);
-  constructor(
-    private userService: UserService,
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
+  events: string[] = [];
+  opened: boolean;
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((data: User[]) => {
       this.users$.next(data);
-      console.log(this.users$);
     });
   }
 }

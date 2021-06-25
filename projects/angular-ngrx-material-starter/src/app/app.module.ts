@@ -7,8 +7,8 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app/app.component';
-import { JwtInterceptor } from './interceptors/JwtInterceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './interceptors/JwtInterceptor';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     // app
     AppRoutingModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-top-center'
+      positionClass: 'toast-bottom-center'
     })
   ],
   declarations: [AppComponent],

@@ -22,7 +22,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatTableModule } from '@angular/material/table'  
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -82,7 +83,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatGridListModule,
     FontAwesomeModule,
     MatTableModule,
-    ToastrModule
+    MatButtonToggleModule
   ],
   declarations: [
     BigInputComponent,
@@ -118,6 +119,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSidenavModule,
     ToastrModule,
     MatTableModule,
+    MatButtonToggleModule,
 
     FontAwesomeModule,
 

@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input
+} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Plant } from '../../../models/plant';
 import { PlantNeed } from '../../../models/plantNeed';
@@ -14,27 +19,46 @@ import { PlantService } from '../plant.service';
 export class PlantNeedComponent implements OnInit {
   @Input() plant: Plant;
   months = {
-    1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June",
-    7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"
+    1: 'January',
+    2: 'February',
+    3: 'March',
+    4: 'April',
+    5: 'May',
+    6: 'June',
+    7: 'July',
+    8: 'August',
+    9: 'September',
+    10: 'October',
+    11: 'November',
+    12: 'December'
   };
-  displayedColumns: string[] = ['needId', 'monthFrom', 'monthTo', 'quantity', 'frequency', 'type', 'settings'];
+  types = { 1: 'Daily', 2: 'Weekly', 3: 'Monthly' };
+  displayedColumns: string[] = [
+    'needId',
+    'monthFrom',
+    'monthTo',
+    'quantity',
+    'frequency',
+    'type',
+    'settings'
+  ];
   need: string;
   plantNeed: PlantNeed;
   addNeed: boolean = false;
-  constructor(private plantService: PlantService,
-    private toastr: ToastrService, private needService: NeedService) { }
+  constructor(
+    private plantService: PlantService,
+    private toastr: ToastrService,
+    private needService: NeedService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getNeed(id: number): string {
-    this.needService.getNeed(id).subscribe(
-      (response: string) => {
-        this.need = response;
-        console.log(response);
-        console.log(this.need);
-      }
-    )
+    this.needService.getNeed(id).subscribe((response: string) => {
+      this.need = response;
+      console.log(response);
+      console.log(this.need);
+    });
     return this.need;
   }
 
@@ -42,25 +66,25 @@ export class PlantNeedComponent implements OnInit {
     this.needService.deletePlantNeed(this.plantNeed.id).subscribe(
       (response) => {
         window.location.reload();
-      }, (error) => {
+      },
+      (error) => {
         this.toastr.error(error);
       }
-    )
+    );
   }
 
   setNeed(need: PlantNeed) {
     this.plantNeed = need;
   }
 
-  openAddNeed(isAdd: boolean){
-    this.addNeed=true;
-    if(isAdd){
-      this.plantNeed=null;
+  openAddNeed(isAdd: boolean) {
+    this.addNeed = true;
+    if (isAdd) {
+      this.plantNeed = null;
     }
   }
 
-  closeAddNeed(){
-    this.addNeed=false;
+  closeAddNeed() {
+    this.addNeed = false;
   }
-
 }

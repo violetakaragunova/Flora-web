@@ -1,7 +1,7 @@
-<button *ngIf="!addNeed" (click)="openAddNeed(true);" mat-raised-button color="primary" style="justify-content: end;">Add
+<button *ngIf="!addNeed" (click)="openAddNeed(true);" mat-raised-button  style="justify-content: end; background-color: #85bea6;">Add
     Need</button>
-<button *ngIf="addNeed" (click)="closeAddNeed();" mat-raised-button color="primary"
-    style="justify-content: end;">Close</button><br><br>
+<button *ngIf="addNeed" (click)="closeAddNeed();" mat-raised-button
+    style="justify-content: end; background-color: #85bea6;">Close</button><br><br>
 <div *ngIf="addNeed">
     <anms-plant-need-add [plantId]="plant.id" [plantNeed]="plantNeed"></anms-plant-need-add>
 </div>
@@ -28,7 +28,7 @@
 
     <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef>Type</th>
-        <td mat-cell *matCellDef="let element">{{element.frequencyType}}</td>
+        <td mat-cell *matCellDef="let element">{{types[element.frequencyTypeId]}}</td>
     </ng-container>
 
     <ng-container matColumnDef="quantity">

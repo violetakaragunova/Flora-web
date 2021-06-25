@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 import { Need } from '../../models/need';
 import { Plant } from '../../models/plant';
 import { PlantNeed } from '../../models/plantNeed';
@@ -12,7 +13,7 @@ import { AccountService } from '../account/account.service';
   providedIn: 'root'
 })
 export class NeedService {
-  ApiUrl = 'https://localhost:44366/api/';
+  ApiUrl = environment.apiUrl;
   user: User;
   currentSelectedPlant: BehaviorSubject<Plant> = new BehaviorSubject<Plant>(
     null
@@ -28,7 +29,7 @@ export class NeedService {
     });
   }
 
-  getNeeds(){
+  getNeeds() {
     return this.http.get(this.ApiUrl + 'need').pipe(
       map((data: Need[]) => {
         return data;
@@ -36,30 +37,32 @@ export class NeedService {
     );
   }
 
-  updatePlantNeed(model:any){
-    return this.http.post(this.ApiUrl+"need/update",model).pipe(
+  updatePlantNeed(model: any) {
+    return this.http.post(this.ApiUrl + 'need/update', model).pipe(
       map((response: PlantNeed) => {
         return response;
       })
-    )
+    );
   }
-  getNeed(id: number){
-    return this.http.get(this.ApiUrl+'need/'+id,{responseType: 'text'}).pipe(
-      map((response: string) => {
-        return response;
-      })
-    )
+  getNeed(id: number) {
+    return this.http
+      .get(this.ApiUrl + 'need/' + id, { responseType: 'text' })
+      .pipe(
+        map((response: string) => {
+          return response;
+        })
+      );
   }
 
-  addNeed(model: any){
-    return this.http.post(this.ApiUrl+"need/add",model).pipe(
+  addNeed(model: any) {
+    return this.http.post(this.ApiUrl + 'need/add', model).pipe(
       map((response: PlantNeed) => {
         return response;
       })
-    )
+    );
   }
 
   deletePlantNeed(id: number) {
-    return this.http.delete(this.ApiUrl+'need/'+id);
+    return this.http.delete(this.ApiUrl + 'need/' + id);
   }
 }

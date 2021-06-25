@@ -1,17 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 import { Month } from '../../models/month';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MonthService {
-  ApiUrl = 'https://localhost:44366/api/';
+  ApiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getMonths(){
+  getMonths() {
     return this.http.get(this.ApiUrl + 'month').pipe(
       map((data: Month[]) => {
         return data;

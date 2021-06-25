@@ -9,27 +9,25 @@ mat-form-field {
 }
 
 div.center {
-  position: absolute;
-  top: 35%;
-  left: 45%;
-  margin-top: -50px;
-  margin-left: -50px;
-  height: 300px;
-  width: 300px;
+  display: block;
+  margin: auto auto auto auto;
 }
 
 div.invalid-feedback {
   color: red !important;
 }
 
-div.bg{
+div.bg {
   height: 100%;
   width: 100%;
   position: relative;
   /* The image used */
-  background-image: url('https://wallpapercave.com/wp/wp7392083.jpg');
+  background-color: #f5f6f8;
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+button {
+  background-color: #85bea6;
 }

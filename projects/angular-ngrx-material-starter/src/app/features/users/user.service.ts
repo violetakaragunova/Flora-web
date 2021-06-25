@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, take } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 import { User } from '../../models/user';
 import { AccountService } from '../account/account.service';
 
@@ -8,7 +9,7 @@ import { AccountService } from '../account/account.service';
   providedIn: 'root'
 })
 export class UserService {
-  ApiUrl = 'https://localhost:44366/api/';
+  ApiUrl = environment.apiUrl;
   user: User;
 
   constructor(
