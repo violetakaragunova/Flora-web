@@ -35,6 +35,6 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/account');
   }
 }

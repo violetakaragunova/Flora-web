@@ -1,7 +1,8 @@
-<button *ngIf="!addNeed" (click)="openAddNeed(true);" mat-raised-button  style="justify-content: end; background-color: #85bea6;">Add
+<button *ngIf="!addNeed" (click)="openAddNeed(true);" mat-raised-button
+    style="justify-content: end; background-color: #85bea6; color: white;">Add
     Need</button>
 <button *ngIf="addNeed" (click)="closeAddNeed();" mat-raised-button
-    style="justify-content: end; background-color: #85bea6;">Close</button><br><br>
+    style="justify-content: end; background-color: #85bea6; color: white;">Close</button><br><br>
 <div *ngIf="addNeed">
     <anms-plant-need-add [plantId]="plant.id" [plantNeed]="plantNeed"></anms-plant-need-add>
 </div>
@@ -39,8 +40,7 @@
     <ng-container matColumnDef="settings">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-            <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu"
-                (click)="setNeed(element)">
+            <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" (click)="setNeed(element)">
                 <mat-icon>more_vert</mat-icon>
             </button>
         </td>

@@ -7,7 +7,7 @@
             <mat-form-field style="padding-right: 2;">
                 <mat-label>Name</mat-label>
                 <mat-card-title><input type="text" matInput formControlName="name" placeholder="Name"></mat-card-title>
-            </mat-form-field> <br>
+            </mat-form-field>
             <mat-form-field style="margin-left: 20px;">
                 <mat-label>Room Number</mat-label>
                 <mat-card-title><input type="text" matInput formControlName="roomId" placeholder="Room Number">
@@ -30,7 +30,7 @@
         <div class="form-element">
             <button (click)="save()" mat-raised-button type="submit" class="button"
                 [disabled]="!(AddForm.valid && AddForm.dirty)">Save</button>
-            <button style="background-color: #817d7a!important;" *ngIf="!isAddMode" (click)="deletePlant();"
+            <button style="background-color: #817d7a!important; color: white;" *ngIf="!isAddMode" (click)="deletePlant();"
                 mat-raised-button>Delete Plant</button>
         </div>
     </form>

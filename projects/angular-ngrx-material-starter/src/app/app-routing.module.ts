@@ -16,7 +16,8 @@ const routes: Routes = [
   {
     path: 'plants',
     loadChildren: () =>
-      import('./features/plants/plants.module').then((m) => m.PlantsModule)
+      import('./features/plants/plants.module').then((m) => m.PlantsModule),
+      canActivate: [AuthGuard]
   },
   {
     path: 'users',
@@ -25,7 +26,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'dashboard',
+    path: 'home',
     loadChildren: () =>
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule

@@ -15,10 +15,8 @@
                     <mat-chip-list class="mat-chip-list-stacked">
                         <mat-chip (click)="actionDone(plant,need)" class="example-box" style="width: auto;" cdkDrag
                             *ngFor="let need of plant.plantNeeds">
-                            <div *ngIf="needAction(need)">
                             {{need.needName}} <label *ngIf="need.needId == 1">({{need.quantity}} ml)</label>
                             <mat-icon [ngStyle]="{'color':'green'}">check_circle_outline</mat-icon>
-                        </div>
                         </mat-chip>
                     </mat-chip-list>
                 </div>
