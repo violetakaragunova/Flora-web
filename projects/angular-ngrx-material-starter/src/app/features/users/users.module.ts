@@ -7,9 +7,20 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { SharedModule } from '../../shared/shared.module';
 import { RegisterComponent } from '../account/register/register.component';
 import { AccountModule } from '../account/account.module';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AvatarModule } from 'ngx-avatar';
 
 @NgModule({
-  declarations: [UsersItemComponent, UsersDetailsComponent, UsersListComponent],
-  imports: [CommonModule, UsersRoutingModule, SharedModule, AccountModule]
+  declarations: [
+    UsersItemComponent, 
+    UsersDetailsComponent, 
+    UsersListComponent, 
+    UserProfileComponent],
+  imports: [
+    CommonModule, 
+    UsersRoutingModule,
+    AvatarModule,
+    SharedModule, 
+    AccountModule]
 })
 export class UsersModule {}

@@ -14,7 +14,7 @@
          </button>
         </mat-list-item>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>View profile</button>
+          <button routerLink="users/{{user.id}}" mat-menu-item>View profile</button>
           <button (click)="logout()" mat-menu-item>Log out</button>
         </mat-menu>
       </mat-list>

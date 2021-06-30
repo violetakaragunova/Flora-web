@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from '../../guards/admin.guard';
 import { AuthGuard } from '../../guards/auth.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
@@ -10,6 +11,12 @@ const routes: Routes = [
     component: UsersListComponent,
     canActivate: [AdminGuard, AuthGuard],
     data: { title: 'anms.users.list' }
+  },
+  {
+    path: ':id',
+    component: UserProfileComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'anms.users.profile' }
   }
 ];
 

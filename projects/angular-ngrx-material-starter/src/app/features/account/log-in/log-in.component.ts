@@ -31,7 +31,7 @@ export class LogInComponent implements OnInit {
   login() {
     this.accountService.login(this.loginForm.value).subscribe(
       (response) => {
-        this.router.navigateByUrl('/plants');
+        this.router.navigateByUrl('/home');
       },
       (error) => {
         this.toastr.error(error);
@@ -43,7 +43,7 @@ export class LogInComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       this.accountService.setCurrentUser(user);
-      this.router.navigateByUrl('/plants');
+      this.router.navigateByUrl('/home');
     }
   }
 }

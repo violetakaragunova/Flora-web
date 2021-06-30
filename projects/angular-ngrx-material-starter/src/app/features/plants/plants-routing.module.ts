@@ -11,18 +11,6 @@ const routes: Routes = [
     component: ListPlantsComponent,
     canActivate: [AuthGuard],
     data: { title: 'anms.plants.list' }
-  },
-  {
-    path: 'add',
-    component: PlantAddComponent,
-    canActivate: [AuthGuard],
-    data: { title: 'anms.plants.add' }
-  },
-  {
-    path: ':id',
-    component: PlantDetailsComponent,
-    canActivate: [AuthGuard],
-    data: { title: 'anms.plants.details' }
   }
 ];
 

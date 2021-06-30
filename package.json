@@ -65,6 +65,7 @@
     "bootstrap": "^4.5.3",
     "browser-detect": "^0.2.28",
     "mdb-ui-kit": "^3.6.0",
+    "ngx-avatar": "^4.1.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-toastr": "^14.0.0",
     "rxjs": "~6.6.3",

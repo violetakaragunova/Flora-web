@@ -28,4 +28,12 @@ export class UserService {
       })
     );
   }
+
+  getUser(id: number) {
+    return this.http.get(this.ApiUrl + 'user/'+id).pipe(
+      map((data: User) => {
+        return data;
+      })
+    );
+  }
 }

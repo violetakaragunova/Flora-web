@@ -13,6 +13,7 @@ import { PlantNeed } from '../../../models/plantNeed';
 import { User } from '../../../models/user';
 import { AccountService } from '../../account/account.service';
 import { MonthService } from '../../plants/month.service';
+import { PlantService } from '../../plants/plant.service';
 import { DashboardService } from '../dashboard.service';
 
 @Component({
@@ -42,7 +43,8 @@ export class DashboardComponent implements OnInit {
       private router: Router,
       private accountService: AccountService,
       private formBuilder: FormBuilder,
-      private toastr: ToastrService) {
+      private toastr: ToastrService,
+      private plantService: PlantService) {
         this.accountService.currentUser$.pipe(take(1)).subscribe((user) => {
           this.user = user;
         });
@@ -58,7 +60,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getTypes().subscribe((data: FrequencyType[]) => {
       this.types$.next(data);
     });
-    this.dashboardService.getPlants().subscribe((data: Plant[]) => {
+    this.plantService.getPlants().subscribe((data: Plant[]) => {
       this.plants$.next(data);
     });
     
@@ -67,10 +69,10 @@ export class DashboardComponent implements OnInit {
 
   apply() {
     console.log(this.selectedType);
-    this.dashboardService.getPlants().subscribe((data: Plant[]) => {
+    /*this.dashboardService.getPlants().subscribe((data: Plant[]) => {
       this.plants$.next(data);
     });
-    console.log(this.dashboardService.needAction(1,1,1));
+    console.log(this.dashboardService.needAction(1,1,1));*/
     this.changeDetectorRef.detectChanges();
   }
 
