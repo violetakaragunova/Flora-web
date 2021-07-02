@@ -9,12 +9,12 @@
             <button (click)="deletePlant(); sidenav.toggle();" mat-raised-button>Add Plant</button>
         </div>
     </div>
-    <mat-drawer-container style="height: auto;">
-        <mat-nav-list style="background-color: #f5f6f8">
+    <mat-drawer-container>
+        <mat-nav-list>
             <anms-plant-item (click)="onSelectedPlant(plant); sidenav.toggle();"  *ngFor="let plant of plants | async" [plant]="plant">
             </anms-plant-item>
         </mat-nav-list>
-        <mat-drawer style="width: 50%; background-color: #f5f6f8" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+        <mat-drawer #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
             (closed)="events.push('close!');" position="end">
             <anms-plant-details></anms-plant-details>
         </mat-drawer>

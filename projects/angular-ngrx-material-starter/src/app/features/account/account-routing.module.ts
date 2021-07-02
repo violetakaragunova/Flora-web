@@ -21,12 +21,6 @@ const routes: Routes = [
     path: 'resetPassword',
     component: ResetPasswordComponent,
     data: { title: 'anms.resetPassword' }
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    data: { title: 'anms.register' },
-    canActivate: [AdminGuard]
   }
 ];
 

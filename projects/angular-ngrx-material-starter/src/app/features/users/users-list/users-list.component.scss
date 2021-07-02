@@ -13,3 +13,32 @@ button {
   background-color: #85bea6;
   color: white;
 }
+
+div.center {
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  margin-top: -50px;
+  height: 150px;
+  width: 500px;
+}
+
+div.main{
+  height: auto;
+  padding-left: 0px;
+  padding-right: 0px; 
+  background-color: #f5f6f8;
+}
+
+mat-nav-list{
+  min-height: 600px; 
+  height: auto; 
+  background-color: #f5f6f8;
+}
+
+mat-drawer{
+  width: 30%; 
+  padding-top: 0px; 
+  margin-top: 0%;
+  background-color: #f5f6f8;
+}

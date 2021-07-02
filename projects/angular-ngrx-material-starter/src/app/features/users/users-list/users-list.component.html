@@ -1,7 +1,7 @@
 
-<div class="container mt-5" style="height: auto;padding-left: 0px;padding-right: 0px; background-color: #f5f6f8;">
+<div class="container mt-5 main">
     <mat-drawer-container style="height: auto;">
-    <mat-nav-list style="min-height: 600px; height: auto; background-color: #f5f6f8;">
+    <mat-nav-list>
         <mat-list-item mat-list-item>
             <span matLine class="green">
                 <h3>Users</h3>
@@ -10,9 +10,11 @@
         </mat-list-item>
         <anms-users-item *ngFor="let user of users$ | async" [user]="user"></anms-users-item>
     </mat-nav-list>
-    <mat-drawer style="width: 50%; padding-top: 0px; margin-top: 0%; background-color: #f5f6f8;" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+    <mat-drawer #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
         (closed)="events.push('close!');" position="end">
-        <anms-register style="padding-left: 0px;padding-right: 0px;"></anms-register>
+        <div>
+        <anms-register></anms-register>
+        </div>
     </mat-drawer>
 </mat-drawer-container>
 </div>

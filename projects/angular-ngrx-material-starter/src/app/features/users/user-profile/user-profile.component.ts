@@ -13,6 +13,7 @@ import { UserService } from '../user.service';
 })
 export class UserProfileComponent implements OnInit {
   user$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  user: any;
   name: string = 'Violeta Karagunova';
   userValues:any;
   id: number;
@@ -20,12 +21,9 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.id=Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.id);
     this.userService.getUser(this.id).subscribe((data: User) => {
       this.user$.next(data);
-    });
-    this.user$.subscribe(value => {
-      console.log(value);
+      this.user=data;
     });
   }
 

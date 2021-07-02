@@ -1,10 +1,10 @@
-<div style="margin:1em; max-width: auto; background-color: #f5f6f8">
-    <form [formGroup]="AddForm" class="example-form">
+<div class="main">
+    <form [formGroup]="AddForm" class="form">
         <mat-card-header>
             <!-- <img *ngIf="!isAddMode" mat-card-avatar src="{{plant?.photoUrl}}"> -->
             <img *ngIf="isAddMode" mat-card-avatar
                 src="https://thumbs.dreamstime.com/b/black-silhouette-potted-plant-white-background-element-poster-animation-etc-203963346.jpg">
-            <mat-form-field style="padding-right: 2;">
+            <mat-form-field>
                 <mat-label>Name</mat-label>
                 <mat-card-title><input type="text" matInput formControlName="name" placeholder="Name"></mat-card-title>
             </mat-form-field>
@@ -16,7 +16,7 @@
         </mat-card-header>
         <img *ngIf="isAddMode" mat-card-image
             src="https://thumbs.dreamstime.com/b/black-silhouette-potted-plant-white-background-element-poster-animation-etc-203963346.jpg">
-        <img class="centered" mat-card-image src="{{plant?.photoUrl}}">
+        <img *ngIf="!isAddMode" class="centered" mat-card-image src="{{plant?.photoUrl}}">
         <mat-card-content>
             <mat-form-field style="width: 100%;">
                 <mat-label>Description</mat-label>
@@ -30,7 +30,7 @@
         <div class="form-element">
             <button (click)="save()" mat-raised-button type="submit" class="button"
                 [disabled]="!(AddForm.valid && AddForm.dirty)">Save</button>
-            <button style="background-color: #817d7a!important; color: white;" *ngIf="!isAddMode" (click)="deletePlant();"
+            <button class="delete" *ngIf="!isAddMode" (click)="deletePlant();"
                 mat-raised-button>Delete Plant</button>
         </div>
     </form>

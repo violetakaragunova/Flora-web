@@ -1,8 +1,6 @@
-<button *ngIf="!addNeed" (click)="openAddNeed(true);" mat-raised-button
-    style="justify-content: end; background-color: #85bea6; color: white;">Add
+<button *ngIf="!addNeed" (click)="openAddNeed(true);" mat-raised-button class="drawer-button">Add
     Need</button>
-<button *ngIf="addNeed" (click)="closeAddNeed();" mat-raised-button
-    style="justify-content: end; background-color: #85bea6; color: white;">Close</button><br><br>
+<button *ngIf="addNeed" (click)="closeAddNeed();" mat-raised-button class="drawer-button">Close</button><br><br>
 <div *ngIf="addNeed">
     <anms-plant-need-add [plantId]="plant.id" [plantNeed]="plantNeed"></anms-plant-need-add>
 </div>

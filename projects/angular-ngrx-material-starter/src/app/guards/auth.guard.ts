@@ -28,6 +28,6 @@ export class AuthGuard implements CanActivate {
         this.toastr.error('You should log in first!');
         this.router.navigateByUrl('/account');
       })
-    );
+    )
   }
 }
