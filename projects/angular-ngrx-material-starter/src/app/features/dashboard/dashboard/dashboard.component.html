@@ -3,7 +3,7 @@
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
                 <mat-button-toggle-group [(value)]="selectedType" name="need">
-                    <mat-button-toggle (click)="apply();" *ngFor="let type of types$ | async" [value]="type.id" style="width: 80px;">{{type.type}}
+                    <mat-button-toggle (click)="onTypeSelectionChanged();" *ngFor="let type of types$ | async" [value]="type.id" style="width: 80px;">{{type.type}}
                     </mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-12 col-md-7">
                         <mat-card-title>{{ plant.name }}</mat-card-title>
-                        <mat-card-subtitle>Room: {{plant.roomId}}</mat-card-subtitle>
+                        <mat-card-subtitle>Room: {{plant.roomName}}</mat-card-subtitle>
                         <mat-chip-list class="mat-chip-list-stacked">
                             <mat-chip (click)="actionDone(plant,need)" class="example-box" style="width: auto;" cdkDrag
                                 *ngFor="let need of plant.plantNeeds">

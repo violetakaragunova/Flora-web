@@ -63,8 +63,6 @@ export class PlantNeedAddComponent implements OnInit {
 
     if (this.plantNeed) {
       this.AddForm.patchValue(this.plantNeed);
-      console.log(this.plantNeed);
-      console.log(this.AddForm.value);
       this.isAdd = false;
     }
 
@@ -86,7 +84,6 @@ export class PlantNeedAddComponent implements OnInit {
   }
 
   save() {
-    console.log(this.AddForm.value);
     this.AddForm.value['needId'] = parseInt(this.AddForm.value['needId']);
     this.AddForm.value['monthFrom'] = parseInt(this.AddForm.value['monthFrom']);
     this.AddForm.value['monthTo'] = parseInt(this.AddForm.value['monthTo']);

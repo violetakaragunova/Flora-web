@@ -2,19 +2,17 @@
     <form [formGroup]="AddForm" class="form">
         <mat-card-header>
             <!-- <img *ngIf="!isAddMode" mat-card-avatar src="{{plant?.photoUrl}}"> -->
-            <img *ngIf="isAddMode" mat-card-avatar
-                src="https://thumbs.dreamstime.com/b/black-silhouette-potted-plant-white-background-element-poster-animation-etc-203963346.jpg">
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <mat-card-title><input type="text" matInput formControlName="name" placeholder="Name"></mat-card-title>
             </mat-form-field>
             <mat-form-field style="margin-left: 20px;">
-                <mat-label>Room Number</mat-label>
-                <mat-card-title><input type="text" matInput formControlName="roomId" placeholder="Room Number">
+                <mat-label>Room Name</mat-label>
+                <mat-card-title><input type="text" matInput formControlName="roomName" placeholder="Room Number">
                 </mat-card-title>
             </mat-form-field>
         </mat-card-header>
-        <img *ngIf="isAddMode" mat-card-image
+        <img *ngIf="isAddMode" class="centered" mat-card-image
             src="https://thumbs.dreamstime.com/b/black-silhouette-potted-plant-white-background-element-poster-animation-etc-203963346.jpg">
         <img *ngIf="!isAddMode" class="centered" mat-card-image src="{{plant?.photoUrl}}">
         <mat-card-content>

@@ -13,7 +13,6 @@ import { AccountService } from '../account/account.service';
   providedIn: 'root'
 })
 export class NeedService {
-  ApiUrl = environment.apiUrl;
   user: User;
   currentSelectedPlant: BehaviorSubject<Plant> = new BehaviorSubject<Plant>(
     null
@@ -25,12 +24,11 @@ export class NeedService {
   ) {
     this.accountService.currentUser$.pipe(take(1)).subscribe((user) => {
       this.user = user;
-      console.log(user);
     });
   }
 
   getNeeds() {
-    return this.http.get(this.ApiUrl + 'need').pipe(
+    return this.http.get(environment.apiUrl + 'need').pipe(
       map((data: Need[]) => {
         return data;
       })
@@ -38,7 +36,7 @@ export class NeedService {
   }
 
   updatePlantNeed(model: any) {
-    return this.http.post(this.ApiUrl + 'need/update', model).pipe(
+    return this.http.post(environment.apiUrl + 'need/update', model).pipe(
       map((response: PlantNeed) => {
         return response;
       })
@@ -46,7 +44,7 @@ export class NeedService {
   }
   getNeed(id: number) {
     return this.http
-      .get(this.ApiUrl + 'need/' + id, { responseType: 'text' })
+      .get(environment.apiUrl + 'need/' + id, { responseType: 'text' })
       .pipe(
         map((response: string) => {
           return response;
@@ -55,7 +53,7 @@ export class NeedService {
   }
 
   addNeed(model: any) {
-    return this.http.post(this.ApiUrl + 'need/add', model).pipe(
+    return this.http.post(environment.apiUrl + 'need/add', model).pipe(
       map((response: PlantNeed) => {
         return response;
       })
@@ -63,6 +61,6 @@ export class NeedService {
   }
 
   deletePlantNeed(id: number) {
-    return this.http.delete(this.ApiUrl + 'need/' + id);
+    return this.http.delete(environment.apiUrl + 'need/' + id);
   }
 }

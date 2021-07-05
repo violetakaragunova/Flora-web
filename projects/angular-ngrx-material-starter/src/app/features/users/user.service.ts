@@ -9,7 +9,6 @@ import { AccountService } from '../account/account.service';
   providedIn: 'root'
 })
 export class UserService {
-  ApiUrl = environment.apiUrl;
   user: User;
 
   constructor(
@@ -22,7 +21,7 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get(this.ApiUrl + 'user').pipe(
+    return this.http.get(environment.apiUrl + 'user').pipe(
       map((data: User[]) => {
         return data;
       })
@@ -30,7 +29,7 @@ export class UserService {
   }
 
   getUser(id: number) {
-    return this.http.get(this.ApiUrl + 'user/'+id).pipe(
+    return this.http.get(environment.apiUrl + 'user/'+id).pipe(
       map((data: User) => {
         return data;
       })

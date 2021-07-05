@@ -12,7 +12,6 @@ import { AccountService } from '../account/account.service';
   providedIn: 'root'
 })
 export class PlantService {
-  ApiUrl = environment.apiUrl;
   user: User;
   plants: Plant[];
   currentSelectedPlant: BehaviorSubject<Plant> = new BehaviorSubject<Plant>(
@@ -25,12 +24,11 @@ export class PlantService {
   ) {
     this.accountService.currentUser$.pipe(take(1)).subscribe((user) => {
       this.user = user;
-      console.log(user);
     });
   }
 
   getPlants() {
-    return this.http.get(this.ApiUrl + 'plant').pipe(
+    return this.http.get(environment.apiUrl + 'plant').pipe(
       map((data: Plant[]) => {
         return data;
       })
@@ -38,7 +36,7 @@ export class PlantService {
   }
 
   getPlantById(id: number) {
-    return this.http.get(this.ApiUrl + 'plant/' + id).pipe(
+    return this.http.get(environment.apiUrl + 'plant/' + id).pipe(
       map((response: Plant) => {
         return response;
       })
@@ -47,7 +45,7 @@ export class PlantService {
 
   addPlant(model: any) {
     model.id = 0;
-    return this.http.post(this.ApiUrl + 'plant/add', model).pipe(
+    return this.http.post(environment.apiUrl + 'plant/add', model).pipe(
       map((response: Plant) => {
         return response;
       })
@@ -55,11 +53,11 @@ export class PlantService {
   }
 
   deletePlant(id: number) {
-    return this.http.delete(this.ApiUrl + 'plant/' + id);
+    return this.http.delete(environment.apiUrl + 'plant/' + id);
   }
 
   updatePlant(model: any) {
-    return this.http.post(this.ApiUrl + 'plant/update', model).pipe(
+    return this.http.post(environment.apiUrl + 'plant/update', model).pipe(
       map((response: Plant) => {
         return response;
       })

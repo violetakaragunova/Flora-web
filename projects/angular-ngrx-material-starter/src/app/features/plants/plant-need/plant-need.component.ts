@@ -56,8 +56,6 @@ export class PlantNeedComponent implements OnInit {
   getNeed(id: number): string {
     this.needService.getNeed(id).subscribe((response: string) => {
       this.need = response;
-      console.log(response);
-      console.log(this.need);
     });
     return this.need;
   }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Action } from '../../models/action';
+import { DashboardPlant } from '../../models/dashboardPlant';
 import { FrequencyType } from '../../models/frequencyType';
 import { Plant } from '../../models/plant';
 
@@ -10,29 +11,28 @@ import { Plant } from '../../models/plant';
   providedIn: 'root'
 })
 export class DashboardService {
-  ApiUrl = environment.apiUrl;
   needsAction : boolean;
 
   constructor(private http: HttpClient) { }
 
   getTypes() {
-    return this.http.get(this.ApiUrl + 'dashboard').pipe(
+    return this.http.get(environment.apiUrl + 'dashboard/types').pipe(
       map((data: FrequencyType[]) => {
         return data;
       })
     );
   }
 
-  getPlants() {
-    return this.http.get(this.ApiUrl + 'dashboard/plants/').pipe(
-      map((data: Plant[]) => {
+  getPlants(typeId: number) {
+    return this.http.get(environment.apiUrl + 'dashboard/plants/'+typeId).pipe(
+      map((data: DashboardPlant[]) => {
         return data;
       })
     );
   }
 
   addPlant(model: any) {
-    return this.http.post(this.ApiUrl + 'dashboard/add', model).pipe(
+    return this.http.post(environment.apiUrl + 'dashboard/add', model).pipe(
       map((response: Action) => {
         return response;
       })
@@ -40,7 +40,7 @@ export class DashboardService {
   }
 
   needAction(needId: number, plantId: number, typeId: number){
-     return this.http.get(this.ApiUrl + 'dashboard/action/'+needId+'/'+plantId+'/'+typeId).pipe(
+     return this.http.get(environment.apiUrl + 'dashboard/action/'+needId+'/'+plantId+'/'+typeId).pipe(
       map((response: boolean) => {
         return response;
       })

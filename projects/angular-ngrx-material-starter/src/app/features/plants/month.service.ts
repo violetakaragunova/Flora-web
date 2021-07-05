@@ -8,12 +8,11 @@ import { Month } from '../../models/month';
   providedIn: 'root'
 })
 export class MonthService {
-  ApiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   getMonths() {
-    return this.http.get(this.ApiUrl + 'month').pipe(
+    return this.http.get(environment.apiUrl + 'month').pipe(
       map((data: Month[]) => {
         return data;
       })

@@ -20,7 +20,6 @@ export class ForgotPasswordComponent implements OnInit {
 
   forgotPassword() {
     this.accountService.forgotPassword(this.model).subscribe((result) => {
-      console.log(result);
       this.toastr.success('Link was sent successfully!');
     });
   }

@@ -25,6 +25,7 @@ export class UserProfileComponent implements OnInit {
       this.user$.next(data);
       this.user=data;
     });
+    
   }
 
 }

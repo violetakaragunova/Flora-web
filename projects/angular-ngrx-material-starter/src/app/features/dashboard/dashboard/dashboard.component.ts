@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import { repeat, take } from 'rxjs/operators';
 import { Action } from '../../../models/action';
+import { DashboardPlant } from '../../../models/dashboardPlant';
+import { DashboardPlantNeed } from '../../../models/dashboardPlantNeed';
 import { FrequencyType } from '../../../models/frequencyType';
 import { Month } from '../../../models/month';
 import { Need } from '../../../models/need';
@@ -24,17 +26,13 @@ import { DashboardService } from '../dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   types$: BehaviorSubject<FrequencyType[]> = new BehaviorSubject<FrequencyType[]>(null);
-  plants$: BehaviorSubject<Plant[]> = new BehaviorSubject<Plant[]>(null);
-  months = {
-    1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June",
-    7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"
-  };
+  plants$: BehaviorSubject<DashboardPlant[]> = new BehaviorSubject<DashboardPlant[]>(null);
   displayedColumns: string[] = ['needId', 'monthFrom', 'monthTo', 'quantity', 'frequency', 'type'];
-  selectedType: number = 1;
+  selectedType: number;
   user: any;
   curDate: any;
   model: Action;
-  AddAction: FormGroup;
+  addAction: FormGroup;
   actionNeed: boolean = false;
 
   constructor(
@@ -48,7 +46,7 @@ export class DashboardComponent implements OnInit {
         this.accountService.currentUser$.pipe(take(1)).subscribe((user) => {
           this.user = user;
         });
-        this.AddAction = this.formBuilder.group({
+        this.addAction = this.formBuilder.group({
           userId: [null, Validators.required],
           plantId: [null, Validators.required],
           needId: [null, Validators.required],
@@ -60,31 +58,31 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getTypes().subscribe((data: FrequencyType[]) => {
       this.types$.next(data);
     });
-    this.plantService.getPlants().subscribe((data: Plant[]) => {
+    this.selectedType = 1;
+    this.dashboardService.getPlants(this.selectedType).subscribe((data: DashboardPlant[]) => {
       this.plants$.next(data);
     });
-    
-    
   }
 
-  apply() {
-    console.log(this.selectedType);
-    /*this.dashboardService.getPlants().subscribe((data: Plant[]) => {
+  onTypeSelectionChanged() {
+    this.dashboardService.getPlants(this.selectedType).subscribe((data: DashboardPlant[]) => {
       this.plants$.next(data);
     });
-    console.log(this.dashboardService.needAction(1,1,1));*/
-    this.changeDetectorRef.detectChanges();
   }
 
-  actionDone(plant: Plant , need: PlantNeed){
+  actionDone(plant: DashboardPlant , need: DashboardPlantNeed){
     this.curDate=new Date();
-    this.AddAction.value['userId']=this.user.id;
-    this.AddAction.value['plantId']=plant.id;
-    this.AddAction.value['needId']=need.needId;
-    this.AddAction.value['dateActionDone']=this.curDate;
-    this.dashboardService.addPlant(this.AddAction.value).subscribe(
+    this.addAction.value['userId']=this.user.id;
+    this.addAction.value['plantId']=plant.plantId;
+    this.addAction.value['needId']=need.needId;
+    this.addAction.value['dateActionDone']=this.curDate;
+    this.dashboardService.addPlant(this.addAction.value).subscribe(
       (response) => {
         this.toastr.success(need.needName+" done!");
+        this.dashboardService.getPlants(this.selectedType).subscribe((data: DashboardPlant[]) => {
+          this.plants$.next(data);
+        });
+        this.changeDetectorRef.detectChanges();
       },
       (error) => {
         this.toastr.error(error);
@@ -95,7 +93,6 @@ export class DashboardComponent implements OnInit {
   needAction(need: PlantNeed){
     var action = true;
     this.dashboardService.needAction(need.needId,need.plantId,1).subscribe(response => {
-      console.log(response);
       action = response;
     })
     return action;

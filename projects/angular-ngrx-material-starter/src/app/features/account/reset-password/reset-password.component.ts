@@ -50,7 +50,6 @@ export class ResetPasswordComponent implements OnInit {
       return;
     }
     this.accountService.resetPassword(this.resetForm.value).subscribe((result) => {
-      console.log(result);
       this.toastr.success('Password was changed successfully!');
       delay(1000);
       this.router.navigateByUrl('');

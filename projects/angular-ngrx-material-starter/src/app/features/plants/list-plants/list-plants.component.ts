@@ -18,7 +18,6 @@ export class ListPlantsComponent implements OnInit {
   ngOnInit(): void {
     this.plantService.getPlants().subscribe((data: Plant[]) => {
       this.plants.next(data);
-      console.log(this.plants);
     });
   }
 

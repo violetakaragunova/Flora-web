@@ -32,7 +32,7 @@ export class PlantDetailsComponent implements OnInit{
     this.AddForm = this.formBuilder.group({
       id:[0],
       name: ['', Validators.required],
-      roomId: [null, Validators.required],
+      roomName: ['', Validators.required],
       description:['',Validators.required]
     });
 
@@ -44,13 +44,10 @@ export class PlantDetailsComponent implements OnInit{
        {
         this.AddForm.reset();
         this.isAddMode=true;
-       } 
-       console.log(this.plant);
+       }
       this.changeDetectorRef.detectChanges();
       this.AddForm.patchValue(this.plant);
     });
-
-    console.log(this.AddForm.value);
   }
 
   get f() { return this.AddForm.controls; }
@@ -63,7 +60,6 @@ export class PlantDetailsComponent implements OnInit{
   }
 
   save(){
-    this.AddForm.value['roomId'] = parseInt(this.AddForm.value['roomId']);
     if(this.isAddMode){
       this.plantService.addPlant(this.AddForm.value).subscribe(
         (response) => {
