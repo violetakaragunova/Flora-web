@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+    <div class="row">
+        <div class="col-auto">
+            <img mat-card-image class="centered" src="{{plant.photoUrl}}">
+        </div>
+        <div class="col">
+            <mat-card-title class="text">{{plant.description}}
+              
+                </mat-card-title>
+            <mat-card-subtitle class="text">  {{ plant.name }} | 
+                <span >Room: {{plant.roomId}}</span></mat-card-subtitle>
+            <div  *ngFor="let need of plant.plantNeeds">
+                <anms-need-item [need]="need"></anms-need-item>
+                
+            </div>
+            <button mat-mini-fab [ngStyle]="{'background-color':'#879a8f'}">
+                <mat-icon   [ngStyle]="{'color':'#f3f3f3'}">add</mat-icon>
+        </button>
+           
+        </div>
+
+    </div>
+</mat-card>
