@@ -12,12 +12,12 @@
 
     <ng-container matColumnDef="monthFrom">
         <th mat-header-cell *matHeaderCellDef>From</th>
-        <td mat-cell *matCellDef="let element">{{months[element.monthFrom]}}</td>
+        <td mat-cell *matCellDef="let element">{{element.monthFromName}}</td>
     </ng-container>
 
     <ng-container matColumnDef="monthTo">
         <th mat-header-cell *matHeaderCellDef>To</th>
-        <td mat-cell *matCellDef="let element">{{months[element.monthTo]}}</td>
+        <td mat-cell *matCellDef="let element">{{element.monthToName}}</td>
     </ng-container>
 
     <ng-container matColumnDef="frequency">
@@ -27,7 +27,7 @@
 
     <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef>Type</th>
-        <td mat-cell *matCellDef="let element">{{types[element.frequencyTypeId]}}</td>
+        <td mat-cell *matCellDef="let element">{{element.frequencyType}}</td>
     </ng-container>
 
     <ng-container matColumnDef="quantity">
