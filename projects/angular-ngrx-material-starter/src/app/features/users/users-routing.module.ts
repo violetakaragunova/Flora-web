@@ -10,13 +10,13 @@ const routes: Routes = [
     path: '',
     component: UsersListComponent,
     canActivate: [AdminGuard, AuthGuard],
-    data: { title: 'anms.users.list' }
+    data: { title: 'flora.users.list' }
   },
   {
     path: ':id',
     component: UserProfileComponent,
     canActivate: [AuthGuard],
-    data: { title: 'anms.users.profile' }
+    data: { title: 'flora.users.profile' }
   }
 ];
 

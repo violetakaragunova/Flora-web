@@ -19,7 +19,7 @@ import { PlantService } from '../../plants/plant.service';
 import { DashboardService } from '../dashboard.service';
 
 @Component({
-  selector: 'anms-dashboard',
+  selector: 'flora-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

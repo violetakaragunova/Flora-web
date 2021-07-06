@@ -6,17 +6,17 @@
             </span>
         </div>
         <div class="col-auto">
-            <button (click)="deletePlant(); sidenav.toggle();" mat-raised-button>Add Plant</button>
+            <button (click)="unselectPlant(); sidenav.toggle();" mat-raised-button>Add Plant</button>
         </div>
     </div>
     <mat-drawer-container>
         <mat-nav-list>
-            <anms-plant-item (click)="onSelectedPlant(plant); sidenav.toggle();"  *ngFor="let plant of plants | async" [plant]="plant">
-            </anms-plant-item>
+            <flora-plant-item (click)="onSelectedPlant(plant); sidenav.toggle();"  *ngFor="let plant of plants | async" [plant]="plant">
+            </flora-plant-item>
         </mat-nav-list>
         <mat-drawer #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
             (closed)="events.push('close!');" position="end">
-            <anms-plant-details></anms-plant-details>
+            <flora-plant-details></flora-plant-details>
         </mat-drawer>
     </mat-drawer-container>
 </div>

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'anms-plant-item',
+  selector: 'flora-plant-item',
   templateUrl: './plant-item.component.html',
   styleUrls: ['./plant-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -1,7 +1,6 @@
 <div class="main">
     <form [formGroup]="AddForm" class="form">
         <mat-card-header>
-            <!-- <img *ngIf="!isAddMode" mat-card-avatar src="{{plant?.photoUrl}}"> -->
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <mat-card-title><input type="text" matInput formControlName="name" placeholder="Name"></mat-card-title>
@@ -23,13 +22,12 @@
         </mat-card-content>
         <div *ngIf="!isAddMode">
             Plant Needs
-            <anms-plant-need [plant]="plant"></anms-plant-need><br><br>
+            <flora-plant-need [plant]="plant"></flora-plant-need><br><br>
         </div>
         <div class="form-element">
             <button (click)="save()" mat-raised-button type="submit" class="button"
                 [disabled]="!(AddForm.valid && AddForm.dirty)">Save</button>
-            <button class="delete" *ngIf="!isAddMode" (click)="deletePlant();"
-                mat-raised-button>Delete Plant</button>
+            <button class="delete" *ngIf="!isAddMode" (click)="deletePlant();" mat-raised-button>Delete Plant</button>
         </div>
     </form>
 </div>

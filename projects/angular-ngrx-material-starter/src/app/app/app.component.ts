@@ -7,7 +7,7 @@ import { AccountService } from '../features/account/account.service';
 import { User } from '../models/user';
 
 @Component({
-  selector: 'anms-root',
+  selector: 'flora-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

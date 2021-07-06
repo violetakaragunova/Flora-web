@@ -6,7 +6,7 @@ import { delay } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'anms-reset-password',
+  selector: 'flora-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

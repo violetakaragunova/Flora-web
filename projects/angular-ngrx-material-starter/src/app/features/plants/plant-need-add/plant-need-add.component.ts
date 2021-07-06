@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Input
+  Input,
+  ChangeDetectorRef
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -18,7 +19,7 @@ import { NeedService } from '../need.service';
 import { PlantService } from '../plant.service';
 
 @Component({
-  selector: 'anms-plant-need-add',
+  selector: 'flora-plant-need-add',
   templateUrl: './plant-need-add.component.html',
   styleUrls: ['./plant-need-add.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -36,17 +37,16 @@ export class PlantNeedAddComponent implements OnInit {
     'type'
   ];
   isAdd: boolean = true;
-  needs: BehaviorSubject<Need[]> = new BehaviorSubject<Need[]>(null);
-  types: BehaviorSubject<FrequencyType[]> = new BehaviorSubject<
-    FrequencyType[]
-  >(null);
-  months: BehaviorSubject<Month[]> = new BehaviorSubject<Month[]>(null);
+  needs$: BehaviorSubject<Need[]> = new BehaviorSubject<Need[]>(null);
+  types$: BehaviorSubject<FrequencyType[]> = new BehaviorSubject<FrequencyType[]>(null);
+  months$: BehaviorSubject<Month[]> = new BehaviorSubject<Month[]>(null);
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private needService: NeedService,
     private monthService: MonthService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -67,23 +67,23 @@ export class PlantNeedAddComponent implements OnInit {
     }
 
     this.needService.getNeeds().subscribe((data: Need[]) => {
-      this.needs.next(data);
+      this.needs$.next(data);
     });
 
     this.dashboardService.getTypes().subscribe((data: FrequencyType[]) => {
-      this.types.next(data);
+      this.types$.next(data);
     });
 
     this.monthService.getMonths().subscribe((data: Month[]) => {
-      this.months.next(data);
+      this.months$.next(data);
     });
   }
 
-  get f() {
+  get getFormControls() {
     return this.AddForm.controls;
   }
 
-  save() {
+  onSaveTypeClicked() {
     this.AddForm.value['needId'] = parseInt(this.AddForm.value['needId']);
     this.AddForm.value['monthFrom'] = parseInt(this.AddForm.value['monthFrom']);
     this.AddForm.value['monthTo'] = parseInt(this.AddForm.value['monthTo']);
@@ -92,20 +92,28 @@ export class PlantNeedAddComponent implements OnInit {
     if (this.isAdd) {
       this.needService.addNeed(this.AddForm.value).subscribe(
         (response) => {
-          window.location.reload();
+          this.AddForm.reset();
+          this.needService.getNeeds().subscribe((data: Need[]) => {
+            this.needs$.next(data);
+          });
+          this.changeDetectorRef.detectChanges();
         },
         (error) => {
-          this.toastr.error(error);
+          this.toastr.error('There was some issue. The need was not added.');
         }
       );
     } else {
       this.AddForm.value['id'] = this.plantNeed.id;
       this.needService.updatePlantNeed(this.AddForm.value).subscribe(
         (response) => {
-          window.location.reload();
+          this.AddForm.reset();
+          this.needService.getNeeds().subscribe((data: Need[]) => {
+            this.needs$.next(data);
+          });
+          this.changeDetectorRef.detectChanges();
         },
         (error) => {
-          this.toastr.error(error);
+          this.toastr.error('There was some issue. The need was not updated.');
         }
       );
     }

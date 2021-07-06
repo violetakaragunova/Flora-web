@@ -5,7 +5,7 @@ import { PlantService } from '../plant.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'anms-plant-add',
+  selector: 'flora-plant-add',
   templateUrl: './plant-add.component.html',
   styleUrls: ['./plant-add.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

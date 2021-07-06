@@ -6,7 +6,7 @@ import { User } from '../../../models/user';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'anms-user-profile',
+  selector: 'flora-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -14,8 +14,6 @@ import { UserService } from '../user.service';
 export class UserProfileComponent implements OnInit {
   user$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   user: any;
-  name: string = 'Violeta Karagunova';
-  userValues:any;
   id: number;
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 

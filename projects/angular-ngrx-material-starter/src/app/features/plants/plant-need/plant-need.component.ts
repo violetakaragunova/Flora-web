@@ -11,7 +11,7 @@ import { NeedService } from '../need.service';
 import { PlantService } from '../plant.service';
 
 @Component({
-  selector: 'anms-plant-need',
+  selector: 'flora-plant-need',
   templateUrl: './plant-need.component.html',
   styleUrls: ['./plant-need.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

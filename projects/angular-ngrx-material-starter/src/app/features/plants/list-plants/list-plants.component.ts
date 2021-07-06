@@ -4,7 +4,7 @@ import { Plant } from '../../../models/plant';
 import { PlantService } from '../plant.service';
 
 @Component({
-  selector: 'anms-list-plants',
+  selector: 'flora-list-plants',
   templateUrl: './list-plants.component.html',
   styleUrls: ['./list-plants.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -25,7 +25,7 @@ export class ListPlantsComponent implements OnInit {
     this.plantService.currentSelectedPlant.next(plant);
   }
 
-  deletePlant(){
+  unselectPlant(){
     this.plantService.currentSelectedPlant.next(null);
   }
 }

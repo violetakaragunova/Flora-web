@@ -8,12 +8,12 @@
             </span>
             <button (click)="sidenav.toggle();" mat-raised-button>Add User</button>
         </mat-list-item>
-        <anms-users-item *ngFor="let user of users$ | async" [user]="user"></anms-users-item>
+        <flora-users-item *ngFor="let user of users$ | async" [user]="user"></flora-users-item>
     </mat-nav-list>
     <mat-drawer #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
         (closed)="events.push('close!');" position="end">
         <div>
-        <anms-register></anms-register>
+        <flora-register></flora-register>
         </div>
     </mat-drawer>
 </mat-drawer-container>

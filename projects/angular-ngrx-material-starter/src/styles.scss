@@ -57,3 +57,8 @@
   @include angular-material-theme($anms-nature-theme);
   @include custom-components-theme($anms-nature-theme);
 }
+
+button {
+  background-color: #85bea6;
+  color: white;
+}

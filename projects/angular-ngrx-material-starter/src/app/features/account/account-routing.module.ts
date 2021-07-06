@@ -10,17 +10,17 @@ const routes: Routes = [
   {
     path: '',
     component: LogInComponent,
-    data: { title: 'anms.account' }
+    data: { title: 'flora.account' }
   },
   {
     path: 'forgotPassword',
     component: ForgotPasswordComponent,
-    data: { title: 'anms.forgotPassword' }
+    data: { title: 'flora.forgotPassword' }
   },
   {
     path: 'resetPassword',
     component: ResetPasswordComponent,
-    data: { title: 'anms.resetPassword' }
+    data: { title: 'flora.resetPassword' }
   }
 ];
 

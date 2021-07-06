@@ -43,7 +43,7 @@ export class PlantService {
     );
   }
 
-  addPlant(model: any) {
+  addPlant(model: Plant) {
     model.id = 0;
     return this.http.post(environment.apiUrl + 'plant/add', model).pipe(
       map((response: Plant) => {
@@ -56,7 +56,7 @@ export class PlantService {
     return this.http.delete(environment.apiUrl + 'plant/' + id);
   }
 
-  updatePlant(model: any) {
+  updatePlant(model: Plant) {
     return this.http.post(environment.apiUrl + 'plant/update', model).pipe(
       map((response: Plant) => {
         return response;

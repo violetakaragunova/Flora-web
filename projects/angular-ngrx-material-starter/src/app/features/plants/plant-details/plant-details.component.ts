@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'anms-plant-details',
+  selector: 'flora-plant-details',
   templateUrl: './plant-details.component.html',
   styleUrls: ['./plant-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

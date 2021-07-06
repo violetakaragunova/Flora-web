@@ -35,7 +35,7 @@ export class NeedService {
     );
   }
 
-  updatePlantNeed(model: any) {
+  updatePlantNeed(model: PlantNeed) {
     return this.http.post(environment.apiUrl + 'need/update', model).pipe(
       map((response: PlantNeed) => {
         return response;
@@ -52,7 +52,7 @@ export class NeedService {
       );
   }
 
-  addNeed(model: any) {
+  addNeed(model: PlantNeed) {
     return this.http.post(environment.apiUrl + 'need/add', model).pipe(
       map((response: PlantNeed) => {
         return response;
