@@ -5,12 +5,12 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class MonthService {
+export class RoomService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getMonths() {
-    return this.http.get(environment.apiUrl + 'month').pipe(data=> {
+  getRooms() {
+    return this.http.get(environment.apiUrl + 'room').pipe(data=> {
         return data;
       });
   }

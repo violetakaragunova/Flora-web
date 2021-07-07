@@ -90,12 +90,4 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  needAction(need: PlantNeed){
-    var action = true;
-    this.dashboardService.needAction(need.needId,need.plantId,1).subscribe(response => {
-      action = response;
-    })
-    return action;
-  }
-
 }

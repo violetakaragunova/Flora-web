@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Plant } from '../../models/plant';
-import { PlantNeed } from '../../models/plantNeed';
 import { User } from '../../models/user';
 import { AccountService } from '../account/account.service';
 
@@ -28,28 +27,22 @@ export class PlantService {
   }
 
   getPlants() {
-    return this.http.get(environment.apiUrl + 'plant').pipe(
-      map((data: Plant[]) => {
-        return data;
-      })
-    );
+    return this.http.get(environment.apiUrl + 'plant').pipe(data => {
+      return data;
+    });
   }
 
   getPlantById(id: number) {
-    return this.http.get(environment.apiUrl + 'plant/' + id).pipe(
-      map((response: Plant) => {
-        return response;
-      })
-    );
+    return this.http.get(environment.apiUrl + 'plant/' + id).pipe(response => {
+      return response;
+    });
   }
 
-  addPlant(model: Plant) {
+  addPlant(model: any) {
     model.id = 0;
-    return this.http.post(environment.apiUrl + 'plant/add', model).pipe(
-      map((response: Plant) => {
-        return response;
-      })
-    );
+    return this.http.post(environment.apiUrl + 'plant/add', model).pipe(response => {
+      return response;
+    });
   }
 
   deletePlant(id: number) {
@@ -57,10 +50,8 @@ export class PlantService {
   }
 
   updatePlant(model: Plant) {
-    return this.http.post(environment.apiUrl + 'plant/update', model).pipe(
-      map((response: Plant) => {
-        return response;
-      })
-    );
+    return this.http.post(environment.apiUrl + 'plant/update', model).pipe(response => {
+      return response;
+    });
   }
 }

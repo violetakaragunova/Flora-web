@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Plant } from '../../../models/plant';
@@ -18,6 +20,7 @@ import { PlantService } from '../plant.service';
 })
 export class PlantNeedComponent implements OnInit {
   @Input() plant: Plant;
+  @Output() onSave: EventEmitter<string> = new EventEmitter<string>();
   types = { 1: 'Daily', 2: 'Weekly', 3: 'Monthly' };
   displayedColumns: string[] = [
     'needId',
@@ -32,24 +35,16 @@ export class PlantNeedComponent implements OnInit {
   plantNeed: PlantNeed;
   addNeed: boolean = false;
   constructor(
-    private plantService: PlantService,
     private toastr: ToastrService,
     private needService: NeedService
   ) {}
 
   ngOnInit(): void {}
 
-  getNeed(id: number): string {
-    this.needService.getNeed(id).subscribe((response: string) => {
-      this.need = response;
-    });
-    return this.need;
-  }
-
   deleteNeed() {
     this.needService.deletePlantNeed(this.plantNeed.id).subscribe(
       (response) => {
-        window.location.reload();
+        this.onSave.emit();
       },
       (error) => {
         this.toastr.error(error);

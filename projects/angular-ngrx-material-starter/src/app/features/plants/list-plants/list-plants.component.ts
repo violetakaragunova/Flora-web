@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Plant } from '../../../models/plant';
 import { PlantService } from '../plant.service';
@@ -10,14 +10,14 @@ import { PlantService } from '../plant.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListPlantsComponent implements OnInit {
-  plants: BehaviorSubject<Plant[]> = new BehaviorSubject<Plant[]>(null);
+  plants$: BehaviorSubject<Plant[]> = new BehaviorSubject<Plant[]>(null);
   events: string[] = [];
   opened: boolean;
   constructor(private plantService: PlantService) {}
 
   ngOnInit(): void {
     this.plantService.getPlants().subscribe((data: Plant[]) => {
-      this.plants.next(data);
+      this.plants$.next(data);
     });
   }
 
@@ -27,5 +27,11 @@ export class ListPlantsComponent implements OnInit {
 
   unselectPlant(){
     this.plantService.currentSelectedPlant.next(null);
+  }
+
+  reloadPlants(){
+    this.plantService.getPlants().subscribe((data: Plant[]) => {
+      this.plants$.next(data);
+    });
   }
 }

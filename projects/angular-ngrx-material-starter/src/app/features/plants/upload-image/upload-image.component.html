@@ -1,0 +1,31 @@
+<form>
+    <div class="form-group">
+        <fieldset class="form-group">
+            <span class="invalid-feedback">
+                {{imageError}}
+            </span>
+            <div class="custom-file fileInputProfileWrap">
+                <div class="img-space">
+                    <ng-container *ngIf="cardImageBase64 | async; else elseTemplate">
+                        <img class="centered" [src]="cardImageBase64 | async" />
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <img class="centered"
+                            src="https://thumbs.dreamstime.com/b/black-silhouette-potted-plant-white-background-element-poster-animation-etc-203963346.jpg">
+                    </ng-template>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <input #file type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                        <button mat-raised-button type="button" (click)="file.click()">Upload File</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button mat-raised-button class="remove" type="button" (click)="removeImage()"
+                            *ngIf="cardImageBase64 | async">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</form>

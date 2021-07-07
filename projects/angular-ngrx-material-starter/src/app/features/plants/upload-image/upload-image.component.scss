@@ -1,0 +1,39 @@
+img.centered {
+    border: 2px solid #f5f6f8;
+    border-radius: 30px;
+    display: block;
+    width: 500px;
+    height: 500px;
+  
+  }
+
+.fileInputProfileWrap {
+    width: 100%;
+    height: auto;
+}
+
+.fileInputProfile {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    opacity: 0;
+}
+.fileInputProfile[disabled] + .img-space{
+    pointer-events: none;
+    cursor: not-allowed!important;
+}
+
+button {
+    background-color: #85bea6;
+    color: white;
+  }
+
+.remove {
+    background-color: #817d7a!important; 
+    color: white;
+  }
+
+  .invalid-feedback {
+    color: red !important;
+  }

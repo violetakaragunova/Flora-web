@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { Need } from '../../models/need';
 import { Plant } from '../../models/plant';
 import { PlantNeed } from '../../models/plantNeed';
 import { User } from '../../models/user';
@@ -28,36 +27,21 @@ export class NeedService {
   }
 
   getNeeds() {
-    return this.http.get(environment.apiUrl + 'need').pipe(
-      map((data: Need[]) => {
-        return data;
-      })
-    );
+    return this.http.get(environment.apiUrl + 'need').pipe(data => {
+      return data;
+    });
   }
 
   updatePlantNeed(model: PlantNeed) {
-    return this.http.post(environment.apiUrl + 'need/update', model).pipe(
-      map((response: PlantNeed) => {
-        return response;
-      })
-    );
-  }
-  getNeed(id: number) {
-    return this.http
-      .get(environment.apiUrl + 'need/' + id, { responseType: 'text' })
-      .pipe(
-        map((response: string) => {
-          return response;
-        })
-      );
+    return this.http.post(environment.apiUrl + 'need/update', model).pipe(response => {
+      return response;
+    });
   }
 
   addNeed(model: PlantNeed) {
-    return this.http.post(environment.apiUrl + 'need/add', model).pipe(
-      map((response: PlantNeed) => {
-        return response;
-      })
-    );
+    return this.http.post(environment.apiUrl + 'need/add', model).pipe(response => {
+      return response;
+    });
   }
 
   deletePlantNeed(id: number) {
