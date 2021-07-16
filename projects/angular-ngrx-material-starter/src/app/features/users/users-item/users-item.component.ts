@@ -2,7 +2,7 @@ import { Input } from '@angular/core';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'anms-users-item',
+  selector: 'flora-users-item',
   templateUrl: './users-item.component.html',
   styleUrls: ['./users-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

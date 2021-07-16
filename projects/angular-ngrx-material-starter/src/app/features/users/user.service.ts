@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { User } from '../../models/user';
 import { AccountService } from '../account/account.service';
@@ -9,7 +9,6 @@ import { AccountService } from '../account/account.service';
   providedIn: 'root'
 })
 export class UserService {
-  ApiUrl = environment.apiUrl;
   user: User;
 
   constructor(
@@ -22,18 +21,14 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get(this.ApiUrl + 'user').pipe(
-      map((data: User[]) => {
-        return data;
-      })
-    );
+    return this.http.get(environment.apiUrl + 'user').pipe(data => {
+      return data;
+    });
   }
 
   getUser(id: number) {
-    return this.http.get(this.ApiUrl + 'user/'+id).pipe(
-      map((data: User) => {
-        return data;
-      })
-    );
+    return this.http.get(environment.apiUrl + 'user/' + id).pipe(data => {
+      return data;
+    });
   }
 }

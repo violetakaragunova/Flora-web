@@ -1,21 +1,20 @@
-<div></div>
 <form [formGroup]="AddForm">
     <mat-form-field appearance="fill">
         <mat-label>Needs</mat-label>
         <mat-select style="height: 5px;" formControlName="needId" name="need">
-            <mat-option *ngFor="let need of needs | async" [value]="need.id">{{need.name}}</mat-option>
+            <mat-option *ngFor="let need of needs$ | async" [value]="need.id">{{need.name}}</mat-option>
         </mat-select>
     </mat-form-field><br>
     <mat-form-field appearance="fill">
         <mat-label>From</mat-label>
         <mat-select style="height: 5px;" formControlName="monthFrom" name="monthFrom">
-            <mat-option *ngFor="let month of months | async" [value]="month.id">{{month.name}}</mat-option>
+            <mat-option *ngFor="let month of months$ | async" [value]="month.id">{{month.name}}</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Until</mat-label>
         <mat-select style="height: 5px;" formControlName="monthTo" name="monthTo">
-            <mat-option *ngFor="let month of months | async" [value]="month.id">{{month.name}}</mat-option>
+            <mat-option *ngFor="let month of months$ | async" [value]="month.id">{{month.name}}</mat-option>
         </mat-select>
     </mat-form-field><br>
     <mat-form-field appearance="fill">
@@ -29,11 +28,11 @@
     <mat-form-field appearance="fill">
         <mat-label>Type</mat-label>
         <mat-select style="height: 5px;" formControlName="frequencyTypeId" name="type">
-            <mat-option *ngFor="let type of types | async" [value]="type.id">{{type.type}}</mat-option>
+            <mat-option *ngFor="let type of types$ | async" [value]="type.id">{{type.type}}</mat-option>
         </mat-select>
     </mat-form-field>
     <div class="form-element">
-        <button (click)="save()" mat-raised-button type="submit" class="button"
+        <button (click)="onSaveTypeClicked()" mat-raised-button type="submit" class="button"
             [disabled]="!(AddForm.valid && AddForm.dirty)">Save</button>
     </div>
 </form>

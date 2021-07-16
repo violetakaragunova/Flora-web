@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     component: ListPlantsComponent,
     canActivate: [AuthGuard],
-    data: { title: 'anms.plants.list' }
+    data: { title: 'flora.plants.list' }
   }
 ];
 

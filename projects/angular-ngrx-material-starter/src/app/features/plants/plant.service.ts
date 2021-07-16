@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Plant } from '../../models/plant';
-import { PlantNeed } from '../../models/plantNeed';
 import { User } from '../../models/user';
 import { AccountService } from '../account/account.service';
 
@@ -12,7 +11,6 @@ import { AccountService } from '../account/account.service';
   providedIn: 'root'
 })
 export class PlantService {
-  ApiUrl = environment.apiUrl;
   user: User;
   plants: Plant[];
   currentSelectedPlant: BehaviorSubject<Plant> = new BehaviorSubject<Plant>(
@@ -25,44 +23,35 @@ export class PlantService {
   ) {
     this.accountService.currentUser$.pipe(take(1)).subscribe((user) => {
       this.user = user;
-      console.log(user);
     });
   }
 
   getPlants() {
-    return this.http.get(this.ApiUrl + 'plant').pipe(
-      map((data: Plant[]) => {
-        return data;
-      })
-    );
+    return this.http.get(environment.apiUrl + 'plant').pipe(data => {
+      return data;
+    });
   }
 
   getPlantById(id: number) {
-    return this.http.get(this.ApiUrl + 'plant/' + id).pipe(
-      map((response: Plant) => {
-        return response;
-      })
-    );
+    return this.http.get(environment.apiUrl + 'plant/' + id).pipe(response => {
+      return response;
+    });
   }
 
   addPlant(model: any) {
     model.id = 0;
-    return this.http.post(this.ApiUrl + 'plant/add', model).pipe(
-      map((response: Plant) => {
-        return response;
-      })
-    );
+    return this.http.post(environment.apiUrl + 'plant/add', model).pipe(response => {
+      return response;
+    });
   }
 
   deletePlant(id: number) {
-    return this.http.delete(this.ApiUrl + 'plant/' + id);
+    return this.http.delete(environment.apiUrl + 'plant/' + id);
   }
 
-  updatePlant(model: any) {
-    return this.http.post(this.ApiUrl + 'plant/update', model).pipe(
-      map((response: Plant) => {
-        return response;
-      })
-    );
+  updatePlant(model: Plant) {
+    return this.http.post(environment.apiUrl + 'plant/update', model).pipe(response => {
+      return response;
+    });
   }
 }

@@ -9,14 +9,13 @@ import { User } from '../../models/user';
   providedIn: 'root'
 })
 export class AccountService {
-  ApiUrl = environment.apiUrl;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient) {}
 
   login(model: any) {
-    return this.http.post(this.ApiUrl + 'account/login', model).pipe(
+    return this.http.post(environment.apiUrl+ 'account/login', model).pipe(
       map((response: User) => {
         const user = response;
         if (user) {
@@ -27,7 +26,7 @@ export class AccountService {
   }
 
   register(model: any) {
-    return this.http.post(this.ApiUrl + 'account/register', model).pipe(
+    return this.http.post(environment.apiUrl + 'account/register', model).pipe(
       map((response: User) => {
         const user = response;
         if (user) {
@@ -43,11 +42,11 @@ export class AccountService {
   }
 
   forgotPassword(model: any) {
-    return this.http.post(this.ApiUrl + 'account/forgotPassword', model);
+    return this.http.post(environment.apiUrl + 'account/forgotPassword', model);
   }
 
   resetPassword(model: any) {
-    return this.http.post(this.ApiUrl + 'account/resetPassword', model);
+    return this.http.post(environment.apiUrl+ 'account/resetPassword', model);
   }
 
   setCurrentUser(user: User) {

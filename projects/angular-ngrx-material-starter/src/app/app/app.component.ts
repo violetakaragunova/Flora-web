@@ -7,14 +7,13 @@ import { AccountService } from '../features/account/account.service';
 import { User } from '../models/user';
 
 @Component({
-  selector: 'anms-root',
+  selector: 'flora-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   logo = require('../../assets/logoPlantTracker.png').default;
   theme$: Observable<string>;
-  user:User;
 
   constructor(
     private store: Store,
@@ -23,7 +22,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.theme$ = this.store.pipe(select(selectEffectiveTheme));
     this.setCurrentUser();
   }
 
@@ -31,7 +29,6 @@ export class AppComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       this.accountService.setCurrentUser(user);
-      this.user=user;
     }
   }
 

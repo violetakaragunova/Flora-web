@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     canActivate: [AuthGuard],
-    data: { title: 'anms.dashboard' }
+    data: { title: 'flora.dashboard' }
   }
 ];
 

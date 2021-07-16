@@ -9,7 +9,7 @@ import { User } from '../../../models/user';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'anms-users-list',
+  selector: 'flora-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

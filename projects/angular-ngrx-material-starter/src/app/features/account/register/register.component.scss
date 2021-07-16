@@ -8,27 +8,31 @@ mat-form-field {
   display: block;
 }
 
-div.center {
-  display: block;
-  margin: auto auto auto auto;
-}
 
 div.invalid-feedback {
   color: red !important;
 }
 
-div.bg {
+div.center {
+  position: absolute;
   height: 100%;
+  width: 100%;
+}
+
+div.bg {
+  height: 90%;
   width: 100%;
   position: relative;
   /* The image used */
   // background-color: #f5f6f8;
   /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
+
 button {
   background-color: #85bea6;
   color: white;
+}
+
+mat-card{
+  background-color: #f5f6f8;
 }

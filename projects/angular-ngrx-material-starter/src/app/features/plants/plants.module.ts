@@ -10,6 +10,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { PlantNeedComponent } from './plant-need/plant-need.component';
 import { PlantNeedAddComponent } from './plant-need-add/plant-need-add.component';
+import { UploadImageComponent } from './upload-image/upload-image.component';
 @NgModule({
   declarations: [
     ListPlantsComponent,
@@ -17,7 +18,8 @@ import { PlantNeedAddComponent } from './plant-need-add/plant-need-add.component
     PlantItemComponent,
     PlantDetailsComponent,
     PlantNeedComponent,
-    PlantNeedAddComponent
+    PlantNeedAddComponent,
+    UploadImageComponent
   ],
   imports: [CommonModule, PlantsRoutingModule, SharedModule, NgxGalleryModule]
 })

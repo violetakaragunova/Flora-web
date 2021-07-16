@@ -2,16 +2,17 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'anms-log-in',
+  selector: 'flora-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LogInComponent implements OnInit {
   loginForm: FormGroup;
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,12 +24,16 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void {
     this.checkCurrentUser();
     this.loginForm = this.formBuilder.group({
-      username: [''],
-      password: ['']
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   login() {
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
     this.accountService.login(this.loginForm.value).subscribe(
       (response) => {
         this.router.navigateByUrl('/home');
@@ -45,5 +50,9 @@ export class LogInComponent implements OnInit {
       this.accountService.setCurrentUser(user);
       this.router.navigateByUrl('/home');
     }
+  }
+
+  get f() {
+    return this.loginForm.controls;
   }
 }
