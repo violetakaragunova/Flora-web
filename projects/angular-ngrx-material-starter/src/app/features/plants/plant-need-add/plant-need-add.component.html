@@ -7,13 +7,13 @@
     </mat-form-field><br>
     <mat-form-field appearance="fill">
         <mat-label>From</mat-label>
-        <mat-select style="height: 5px;" formControlName="monthFrom" name="monthFrom">
+        <mat-select style="height: 5px;" formControlName="monthFromId" name="monthFrom">
             <mat-option *ngFor="let month of months$ | async" [value]="month.id">{{month.name}}</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Until</mat-label>
-        <mat-select style="height: 5px;" formControlName="monthTo" name="monthTo">
+        <mat-select style="height: 5px;" formControlName="monthToId" name="monthTo">
             <mat-option *ngFor="let month of months$ | async" [value]="month.id">{{month.name}}</mat-option>
         </mat-select>
     </mat-form-field><br>

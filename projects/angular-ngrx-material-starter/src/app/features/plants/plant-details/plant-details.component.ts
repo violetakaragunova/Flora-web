@@ -86,6 +86,8 @@ export class PlantDetailsComponent implements OnInit {
     else {
       this.AddForm.value['roomId'] = Number(this.AddForm.value['roomId']);
       this.AddForm.value['id'] = this.plant.id;
+      this.AddForm.value['url']= this.plant.photoUrl;
+      console.log(this.AddForm.value);
       this.plantService.updatePlant(this.AddForm.value).subscribe(
         (response) => {
           this.toastr.success("Plant was updated successfuly");
