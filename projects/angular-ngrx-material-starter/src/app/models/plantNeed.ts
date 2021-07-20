@@ -6,7 +6,7 @@ export interface PlantNeed {
   monthToId: number;
   quantity: number;
   frequency: number;
-  frequencyType: string
+  frequencyType: string;
   frequencyTypeId: number;
   needId: number;
   plantId: number;

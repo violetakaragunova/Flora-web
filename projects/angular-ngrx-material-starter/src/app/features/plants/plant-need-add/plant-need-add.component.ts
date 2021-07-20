@@ -42,7 +42,9 @@ export class PlantNeedAddComponent implements OnInit {
   ];
   isAdd: boolean = true;
   needs$: BehaviorSubject<Need[]> = new BehaviorSubject<Need[]>(null);
-  types$: BehaviorSubject<FrequencyType[]> = new BehaviorSubject<FrequencyType[]>(null);
+  types$: BehaviorSubject<FrequencyType[]> = new BehaviorSubject<
+    FrequencyType[]
+  >(null);
   months$: BehaviorSubject<Month[]> = new BehaviorSubject<Month[]>(null);
   constructor(
     private formBuilder: FormBuilder,
@@ -89,7 +91,9 @@ export class PlantNeedAddComponent implements OnInit {
 
   onSaveTypeClicked() {
     this.AddForm.value['needId'] = parseInt(this.AddForm.value['needId']);
-    this.AddForm.value['monthFromId'] = parseInt(this.AddForm.value['monthFromId']);
+    this.AddForm.value['monthFromId'] = parseInt(
+      this.AddForm.value['monthFromId']
+    );
     this.AddForm.value['monthToId'] = parseInt(this.AddForm.value['monthToId']);
     this.AddForm.value['quantity'] = parseInt(this.AddForm.value['quantity']);
     this.AddForm.value['frequency'] = parseInt(this.AddForm.value['frequency']);

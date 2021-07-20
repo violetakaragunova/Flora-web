@@ -72,16 +72,16 @@ export class PlantNeedComponent implements OnInit {
     this.addNeed = false;
   }
 
-  reloadPlants(){
-    this.plantService.getPlantById(this.plant.id).subscribe(
-      (response: Plant) => {
+  reloadPlants() {
+    this.plantService
+      .getPlantById(this.plant.id)
+      .subscribe((response: Plant) => {
         this.plantOb.next(response);
         console.log(response);
         console.log(this.plantOb.value);
         console.log(this.plant);
-      }
-    );
-    this.addNeed=false;
+      });
+    this.addNeed = false;
     this.onSave.emit();
   }
 }

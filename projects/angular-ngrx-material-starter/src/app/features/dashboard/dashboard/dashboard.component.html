@@ -1,38 +1,12 @@
-<div style="margin: 20px;">
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto">
-                <mat-button-toggle-group [(value)]="selectedType" name="need">
-                    <mat-button-toggle (click)="onTypeSelectionChanged();" *ngFor="let type of types$ | async" [value]="type.id" style="width: 80px;">{{type.type}}
-                    </mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-        </div>
-        <div class="center">
-            <mat-card class="example-card" *ngFor="let plant of plants$ | async" style="margin-top: 20px;">
-                <div class="row">
-                    <div class="col-12 col-md-7">
-                        <mat-card-title>{{ plant.name }}</mat-card-title>
-                        <mat-card-subtitle>Room: {{plant.roomName}}</mat-card-subtitle>
-                        <mat-chip-list class="mat-chip-list-stacked">
-                            <mat-chip (click)="actionDone(plant,need)" class="example-box" style="width: auto;" cdkDrag
-                                *ngFor="let need of plant.plantNeeds">
-                                {{need.needName}} <label *ngIf="need.needId == 1">({{need.quantity}} ml)</label>
-                                <mat-icon [ngStyle]="{'color':'green'}">check_circle_outline</mat-icon>
-                            </mat-chip>
-                        </mat-chip-list>
-                    </div>
-                    <div class="col-12 col-md-5">
-                        <button style="float: right; background-color: transparent !important; color: black;" mat-icon-button #menuTrigger="matMenuTrigger"
-                            [matMenuTriggerFor]="menu">
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-                        <mat-menu #menu="matMenu">
-                            <button mat-menu-item>Add custom action</button>
-                        </mat-menu>
-                        <img mat-card-image class="centered" src="{{plant?.photoUrl}}">
-                    </div>
-                </div>
-            </mat-card>
-        </div>
+<div style="margin: 20px;" class="container justify-content-md-center">
+        <mat-button-toggle-group [(value)]="selectedType" name="need">
+            <mat-button-toggle (click)="apply();" *ngFor="let type of types$ | async" [value]="type.id"
+                style="width: 80px;">{{type.type}}
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        <hr>
+    <div *ngFor="let plant of plants$ | async" style="margin-top: 20px;">
+        <anms-dashboard-item [plant]="plant"></anms-dashboard-item>
     </div>
+</div>
+

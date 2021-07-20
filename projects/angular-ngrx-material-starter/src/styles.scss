@@ -5,7 +5,7 @@
 @import 'styles-reset';
 
 @import '~@angular/material/theming';
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 @include mat-core();
 
@@ -56,4 +56,31 @@
 .nature-theme {
   @include angular-material-theme($anms-nature-theme);
   @include custom-components-theme($anms-nature-theme);
+}
+.content-pane-container {
+  margin-top: 57px;
+  padding: 20px;
+  width: 100%;
+  max-width: 900px;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #85bea6 !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #85bea6;
 }

@@ -1,29 +1,36 @@
-.example-card {
-    max-width: 600px;
-  }
+mat-button-toggle {
+  background-color: #b1c0ba;
+  color: #f3f3f3;
+}
 
-  .center{
-    margin: auto;
-    width: 600px;
-  }
+.mat-button-toggle-group-appearance-standard
+  .mat-button-toggle
+  + .mat-button-toggle {
+  border-left: solid 1px white;
+}
 
-  table {
-    width: 100%;
-  }
+.center {
+  margin: auto;
+  width: 600px;
+}
 
-  img.centered {
-    border: 2px solid rgb(157, 202, 157);
-    border-radius: 30px;
-    display: block;
-    margin: auto auto;
- }
+table {
+  width: 100%;
+}
 
- img {
+img.centered {
+  border: 2px solid rgb(157, 202, 157);
+  border-radius: 30px;
+  display: block;
+  margin: auto auto;
+}
+
+img {
   width: 200px;
   height: 200px;
 }
 
-.example-box{
+.example-box {
   background-color: rgb(231, 230, 230);
 }
 
