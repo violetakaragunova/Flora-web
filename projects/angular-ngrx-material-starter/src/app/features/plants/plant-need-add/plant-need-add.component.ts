@@ -3,7 +3,9 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -27,6 +29,8 @@ import { PlantService } from '../plant.service';
 export class PlantNeedAddComponent implements OnInit {
   @Input() plantNeed: PlantNeed;
   @Input() plantId: number;
+  @Output() onSave: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onAdd: EventEmitter<PlantNeed> = new EventEmitter<PlantNeed>();
   AddForm: FormGroup;
   displayedColumns: string[] = [
     'needId',
@@ -38,7 +42,9 @@ export class PlantNeedAddComponent implements OnInit {
   ];
   isAdd: boolean = true;
   needs$: BehaviorSubject<Need[]> = new BehaviorSubject<Need[]>(null);
-  types$: BehaviorSubject<FrequencyType[]> = new BehaviorSubject<FrequencyType[]>(null);
+  types$: BehaviorSubject<FrequencyType[]> = new BehaviorSubject<
+    FrequencyType[]
+  >(null);
   months$: BehaviorSubject<Month[]> = new BehaviorSubject<Month[]>(null);
   constructor(
     private formBuilder: FormBuilder,
@@ -52,8 +58,8 @@ export class PlantNeedAddComponent implements OnInit {
   ngOnInit(): void {
     this.AddForm = this.formBuilder.group({
       id: [0],
-      monthFrom: [null, Validators.required],
-      monthTo: [null, Validators.required],
+      monthFromId: [null, Validators.required],
+      monthToId: [null, Validators.required],
       quantity: ['', Validators.required],
       frequency: ['', Validators.required],
       frequencyTypeId: [null, Validators.required],
@@ -85,18 +91,17 @@ export class PlantNeedAddComponent implements OnInit {
 
   onSaveTypeClicked() {
     this.AddForm.value['needId'] = parseInt(this.AddForm.value['needId']);
-    this.AddForm.value['monthFrom'] = parseInt(this.AddForm.value['monthFrom']);
-    this.AddForm.value['monthTo'] = parseInt(this.AddForm.value['monthTo']);
+    this.AddForm.value['monthFromId'] = parseInt(
+      this.AddForm.value['monthFromId']
+    );
+    this.AddForm.value['monthToId'] = parseInt(this.AddForm.value['monthToId']);
     this.AddForm.value['quantity'] = parseInt(this.AddForm.value['quantity']);
     this.AddForm.value['frequency'] = parseInt(this.AddForm.value['frequency']);
     if (this.isAdd) {
       this.needService.addNeed(this.AddForm.value).subscribe(
         (response) => {
           this.AddForm.reset();
-          this.needService.getNeeds().subscribe((data: Need[]) => {
-            this.needs$.next(data);
-          });
-          this.changeDetectorRef.detectChanges();
+          this.onSave.emit(true);
         },
         (error) => {
           this.toastr.error('There was some issue. The need was not added.');

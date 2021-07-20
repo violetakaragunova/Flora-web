@@ -2,9 +2,9 @@
     Need</button>
 <button *ngIf="addNeed" (click)="closeAddNeed();" mat-raised-button class="drawer-button">Close</button><br><br>
 <div *ngIf="addNeed">
-    <flora-plant-need-add [plantId]="plant.id" [plantNeed]="plantNeed"></flora-plant-need-add>
+    <flora-plant-need-add [plantId]="plant.id" [plantNeed]="plantNeed" (onSave)="reloadPlants()"></flora-plant-need-add>
 </div>
-<table *ngIf="plant.plantNeeds" mat-table [dataSource]="plant.plantNeeds" class="mat-elevation-z8">
+<table *ngIf="plant.plantNeeds" mat-table [dataSource]="(plantOb | async).plantNeeds" class="mat-elevation-z8">
     <ng-container matColumnDef="needId">
         <th mat-header-cell *matHeaderCellDef>Needs</th>
         <td mat-cell *matCellDef="let element">{{element.needName}}</td>

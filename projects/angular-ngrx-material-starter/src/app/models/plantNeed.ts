@@ -2,11 +2,11 @@ export interface PlantNeed {
   id: number;
   monthFromName: string;
   monthToName: string;
-  monthFrom: number;
-  monthTo: number;
+  monthFromId: number;
+  monthToId: number;
   quantity: number;
   frequency: number;
-  frequencyType: string
+  frequencyType: string;
   frequencyTypeId: number;
   needId: number;
   plantId: number;

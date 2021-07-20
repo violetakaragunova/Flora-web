@@ -7,6 +7,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 import { Plant } from '../../../models/plant';
 import { PlantNeed } from '../../../models/plantNeed';
 import { NeedService } from '../need.service';
@@ -21,6 +22,7 @@ import { PlantService } from '../plant.service';
 export class PlantNeedComponent implements OnInit {
   @Input() plant: Plant;
   @Output() onSave: EventEmitter<string> = new EventEmitter<string>();
+  plantOb: BehaviorSubject<Plant> = new BehaviorSubject<Plant>(null);
   types = { 1: 'Daily', 2: 'Weekly', 3: 'Monthly' };
   displayedColumns: string[] = [
     'needId',
@@ -36,10 +38,13 @@ export class PlantNeedComponent implements OnInit {
   addNeed: boolean = false;
   constructor(
     private toastr: ToastrService,
-    private needService: NeedService
+    private needService: NeedService,
+    private plantService: PlantService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.plantOb.next(this.plant);
+  }
 
   deleteNeed() {
     this.needService.deletePlantNeed(this.plantNeed.id).subscribe(
@@ -65,5 +70,18 @@ export class PlantNeedComponent implements OnInit {
 
   closeAddNeed() {
     this.addNeed = false;
+  }
+
+  reloadPlants() {
+    this.plantService
+      .getPlantById(this.plant.id)
+      .subscribe((response: Plant) => {
+        this.plantOb.next(response);
+        console.log(response);
+        console.log(this.plantOb.value);
+        console.log(this.plant);
+      });
+    this.addNeed = false;
+    this.onSave.emit();
   }
 }

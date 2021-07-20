@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
       {
         username: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
+        phoneNumber: ['', Validators.required],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required]
       },
@@ -42,6 +43,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
+    console.log(this.registerForm.value);
     this.accountService.register(this.registerForm.value).subscribe(
       (response) => {
         this.router.navigateByUrl('/users');
