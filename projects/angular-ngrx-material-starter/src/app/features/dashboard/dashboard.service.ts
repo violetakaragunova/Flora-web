@@ -17,12 +17,12 @@ export class DashboardService {
   }
 
   getPlants(typeId: number) {
-    return this.http.get(environment.apiUrl + 'dashboard/plants/' + typeId).pipe(data => {
+    return this.http.get(environment.apiUrl + 'dashboard/plants/'+typeId).pipe(data => {
       return data;
     });
   }
 
-  addPlant(model: any) {
+  addAction(model: any) {
     return this.http.post(environment.apiUrl + 'dashboard/add', model).pipe(response => {
       return response;
     });

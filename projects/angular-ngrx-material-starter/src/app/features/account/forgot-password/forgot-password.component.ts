@@ -21,8 +21,7 @@ export class ForgotPasswordComponent implements OnInit {
     private router: Router
   ) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required], Validators.pattern(this.emailPattern)],
-      reCaptcha: ['', Validators.required]
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]]
     });
   }
 
@@ -30,7 +29,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid) {
-      this.accountService.forgotPassword(this.form.value.email).subscribe(
+      this.accountService.forgotPassword(this.form.value).subscribe(
         (_) => {
           this.toastr.success('Link was sent successfully!');
           this.router.navigate(['/login']);

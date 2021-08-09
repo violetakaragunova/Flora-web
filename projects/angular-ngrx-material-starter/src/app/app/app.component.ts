@@ -12,7 +12,7 @@ import { User } from '../models/user';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  logo = require('../../assets/logoPlantTracker.png').default;
+  logo = require('../../assets/logoFlora2.png').default;
   theme$: Observable<string>;
 
   constructor(

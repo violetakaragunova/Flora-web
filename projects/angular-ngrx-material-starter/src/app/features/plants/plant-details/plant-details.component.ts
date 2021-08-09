@@ -59,6 +59,7 @@ export class PlantDetailsComponent implements OnInit {
         this.isAddMode = true;
       }
       this.AddForm.patchValue(this.plant);
+      console.log(this.plant);
     });
 
     this.roomService.getRooms().subscribe((data: Room[]) => {
@@ -124,6 +125,7 @@ export class PlantDetailsComponent implements OnInit {
   }
 
   reloadPlants() {
+    console.log("Reload plants Plant Details Component");
     this.plantService.currentSelectedPlant.subscribe((result) => {
       this.plant = result;
       this.isAddMode = false;

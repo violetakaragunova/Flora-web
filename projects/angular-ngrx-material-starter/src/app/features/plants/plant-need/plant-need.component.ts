@@ -4,7 +4,8 @@ import {
   ChangeDetectionStrategy,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ChangeDetectorRef
 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
@@ -39,11 +40,13 @@ export class PlantNeedComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private needService: NeedService,
-    private plantService: PlantService
+    private plantService: PlantService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.plantOb.next(this.plant);
+    console.log(this.plant);
   }
 
   deleteNeed() {
@@ -73,12 +76,12 @@ export class PlantNeedComponent implements OnInit {
   }
 
   reloadPlants() {
+    console.log("Reload plants Plant Need Component");
     this.plantService
       .getPlantById(this.plant.id)
       .subscribe((response: Plant) => {
-        this.plantOb.next(response);
-        console.log(response);
-        console.log(this.plantOb.value);
+        this.plant=response;
+        this.changeDetectorRef.detectChanges();
         console.log(this.plant);
       });
     this.addNeed = false;

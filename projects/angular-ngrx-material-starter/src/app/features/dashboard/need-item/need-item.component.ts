@@ -27,12 +27,7 @@ export class NeedItemComponent implements OnInit {
 
   AddAction: FormGroup;
   curDate: any;
-  user: any = {
-    id:0,
-  email: 'emil;ija',
-  username: 'string',
-  token: 'string'
-  }
+  user: any;
   done = false
   constructor(
     private dashboardService: DashboardService,
@@ -51,7 +46,7 @@ export class NeedItemComponent implements OnInit {
       }
 
   ngOnInit(): void {
-  console.log(this.need)
+    console.log(this.need);
   this.accountService.currentUser$.pipe(take(1)).subscribe((user) => {
     this.user = user;
   });
@@ -61,11 +56,12 @@ export class NeedItemComponent implements OnInit {
     this.done = true
 
     this.curDate=new Date();
+    this.AddAction.value['id']=need.id;
     this.AddAction.value['userId']=this.user.id;
     this.AddAction.value['plantId']=need.plantId;
     this.AddAction.value['needId']=need.needId;
     this.AddAction.value['dateActionDone']=this.curDate;
-    this.dashboardService.addPlant(this.AddAction.value).subscribe(
+    this.dashboardService.addAction(this.AddAction.value).subscribe(
       (response) => {
         this.toastr.success(need.needName+" done!");
         this.done = true

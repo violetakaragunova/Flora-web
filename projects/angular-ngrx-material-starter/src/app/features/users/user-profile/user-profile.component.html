@@ -6,7 +6,7 @@
             </div>
             <div class="col-12 col-md-10" style="padding-left: 50px;">
                 <div>
-                    {{user.userName}}
+                    {{user.userName | titlecase}}
                 </div>
                 <div *ngIf="user.email">
                     {{user.email}}

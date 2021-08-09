@@ -1,11 +1,11 @@
-<div style="margin: 20px;" class="container justify-content-md-center">
-        <mat-button-toggle-group [(value)]="selectedType" name="need">
-            <mat-button-toggle (click)="apply();" *ngFor="let type of types$ | async" [value]="type.id"
-                style="width: 80px;">{{type.type}}
+<div style="margin-top: 20px; margin-bottom: 40px; text-align: center;" class="container justify-content-md-center">
+        <mat-button-toggle-group [(value)]="selectedType" name="need" (click)="apply();">
+            <mat-button-toggle *ngFor="let type of types$ | async" [value]="type.id"
+                style="width: 80px; color: white;">{{type.type}}
             </mat-button-toggle>
         </mat-button-toggle-group>
-        <hr>
-    <div *ngFor="let plant of plants$ | async" style="margin-top: 20px;">
+        <hr style="margin-bottom: 0px;">
+    <div class="main-div" *ngFor="let plant of plants$ | async">
         <anms-dashboard-item [plant]="plant"></anms-dashboard-item>
     </div>
 </div>

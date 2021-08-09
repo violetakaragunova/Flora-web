@@ -1,4 +1,4 @@
-<div class="container mt-5" style="height: auto">
+<div class="container mt-5">
     <div class="row">
         <div class="col">
             <span matLine class="green">
@@ -9,7 +9,7 @@
             <button (click)="unselectPlant(); sidenav.toggle();" mat-raised-button>Add Plant</button>
         </div>
     </div>
-    <mat-drawer-container>
+    <mat-drawer-container style="min-height:1500px!important; background: #f5f6f8;">
         <mat-nav-list>
             <flora-plant-item (click)="onSelectedPlant(plant); sidenav.toggle();"  *ngFor="let plant of plants$ | async" [plant]="plant">
             </flora-plant-item>
