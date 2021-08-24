@@ -1,4 +1,4 @@
-<button mat-mini-fab [ngStyle]="{'background-color':'#879a8f'}" (click)="actionDone(need)">
+<button mat-mini-fab matTooltip="{{this.need.needName}}" [ngStyle]="{'background-color':'#85bea6'}" (click)="actionDone(need)">
 
 <ng-container *ngIf="done">
     <mat-icon   [ngStyle]="{'color':'#f3f3f3'}">done</mat-icon>

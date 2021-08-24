@@ -12,11 +12,6 @@
                 <div *ngFor="let need of plant.plantNeeds" class="col-auto">
                     <anms-need-item *ngIf="need.shouldDisplay" [need]="need"></anms-need-item>
                 </div>
-                <!-- <div class="col-2">
-                    <button mat-mini-fab [ngStyle]="{'background-color':'#879a8f'}">
-                        <mat-icon [ngStyle]="{'color':'#f3f3f3'}">add</mat-icon>
-                    </button> 
-                </div> -->
             </div>
             <div class="row" style="padding-top: 10px; padding-left: 10px;">
                 <div *ngFor="let need of plant.plantNeeds">

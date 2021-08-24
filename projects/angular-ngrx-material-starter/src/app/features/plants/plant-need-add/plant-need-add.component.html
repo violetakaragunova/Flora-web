@@ -4,6 +4,20 @@
         <mat-select style="height: 5px;" formControlName="needId" name="need">
             <mat-option *ngFor="let need of needs$ | async" [value]="need.id">{{need.name}}</mat-option>
         </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="ml-2">
+        <mat-label>Quantity</mat-label>
+        <input formControlName="quantity" matInput #input maxlength="10" placeholder="Quantity">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>Frequency</mat-label>
+        <input formControlName="frequency" matInput #input maxlength="10" placeholder="Frequency">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="ml-2">
+        <mat-label>Type</mat-label>
+        <mat-select style="height: 5px;" formControlName="frequencyTypeId" name="type">
+            <mat-option *ngFor="let type of types$ | async" [value]="type.id">{{type.type}}</mat-option>
+        </mat-select>
     </mat-form-field><br>
     <mat-form-field appearance="fill">
         <mat-label>From</mat-label>
@@ -11,24 +25,10 @@
             <mat-option *ngFor="let month of months$ | async" [value]="month.id">{{month.name}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="ml-2">
         <mat-label>Until</mat-label>
         <mat-select style="height: 5px;" formControlName="monthToId" name="monthTo">
             <mat-option *ngFor="let month of months$ | async" [value]="month.id">{{month.name}}</mat-option>
-        </mat-select>
-    </mat-form-field><br>
-    <mat-form-field appearance="fill">
-        <mat-label>Quantity</mat-label>
-        <input formControlName="quantity" matInput #input maxlength="10" placeholder="Quantity">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Frequency</mat-label>
-        <input formControlName="frequency" matInput #input maxlength="10" placeholder="Frequency">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Type</mat-label>
-        <mat-select style="height: 5px;" formControlName="frequencyTypeId" name="type">
-            <mat-option *ngFor="let type of types$ | async" [value]="type.id">{{type.type}}</mat-option>
         </mat-select>
     </mat-form-field>
     <div class="form-element">

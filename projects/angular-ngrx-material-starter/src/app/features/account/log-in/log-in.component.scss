@@ -1,4 +1,4 @@
-mat-card {
+/*mat-card {
   max-width: 400px;
   margin: 2em auto;
   margin-top: 10%;
@@ -29,8 +29,8 @@ div.bg {
   width: 100%;
   position: relative;
   /* The image used */
-  // background-color: #e7e0da;
-  /* Center and scale the image nicely */
+// background-color: #e7e0da;
+/* Center and scale the image nicely 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -38,4 +38,29 @@ div.bg {
 
 div.invalid-feedback {
   color: red !important;
+}*/
+
+:host ::ng-deep.title {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+}
+mat-card {
+  text-align: center;
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+.text-muted {
+  color: #6c757d !important;
+  font-size: 14px;
+}
+
+button {
+  background-color: #85bea6 !important;
+}
+
+a {
+  display: block;
+  margin-top: 15px;
 }
