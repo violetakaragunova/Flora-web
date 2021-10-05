@@ -1,32 +1,29 @@
 .dashboard-card {
-    width: 600px;
-    height: auto;
-    // background-color: #d7e0dd;
-    background-color: #f5f6f8;
-  }
+  width: 600px;
+  height: auto;
+  background-color: #f5f6f8;
+}
 
-  .center{
-    margin: auto;
-    width: 600px;
-  }
+.center {
+  margin: auto;
+  width: 600px;
+}
 
-  table {
-    width: 100%;
-  }
+table {
+  width: 100%;
+}
 
-  img.centered {
-    border: 2px solid #f3f3f3;
-    border-radius: 30px;
-    display: block;
-    margin: auto auto;
- }
+img.centered {
+  border: 2px solid #f3f3f3;
+  border-radius: 30px;
+  display: block;
+  margin: auto auto;
+}
 
- img {
+img {
   width: 130px;
   height: 130px;
 }
-
-
 
 button {
   background-color: #85bea6;

@@ -1,10 +1,17 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Input
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import { repeat, take } from 'rxjs/operators';
 import { Action } from '../../../models/action';
+import { DashboardPlant } from '../../../models/dashboardPlant';
 import { FrequencyType } from '../../../models/frequencyType';
 import { Month } from '../../../models/month';
 import { Need } from '../../../models/need';
@@ -23,23 +30,17 @@ import { DashboardService } from '../dashboard.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardItemComponent implements OnInit {
-  @Input() plant: Plant
+  @Input() plant: DashboardPlant;
 
   constructor(
     private dashboardService: DashboardService,
-      private changeDetectorRef: ChangeDetectorRef,
-      private router: Router,
-      private accountService: AccountService,
-      private formBuilder: FormBuilder,
-      private toastr: ToastrService,
-      private plantService: PlantService) {
-        
-      }
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router,
+    private accountService: AccountService,
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,
+    private plantService: PlantService
+  ) {}
 
-  ngOnInit(): void {
-  
-    
-  }
-
-
+  ngOnInit(): void {}
 }

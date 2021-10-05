@@ -4,6 +4,7 @@ import { PlantNeed } from './plantNeed';
 export interface Plant {
   id: number;
   name: string;
+  plantFamilyName: string;
   description: string;
   roomId: number;
   roomName: string;
