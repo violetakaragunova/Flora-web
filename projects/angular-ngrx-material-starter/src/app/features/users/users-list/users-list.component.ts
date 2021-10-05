@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../../../models/user';
 import { UserService } from '../user.service';
@@ -21,6 +16,12 @@ export class UsersListComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+    this.userService.getUsers().subscribe((data: User[]) => {
+      this.users$.next(data);
+    });
+  }
+
+  reloadUsers() {
     this.userService.getUsers().subscribe((data: User[]) => {
       this.users$.next(data);
     });

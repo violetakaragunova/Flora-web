@@ -13,7 +13,7 @@
     <mat-drawer #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
         (closed)="events.push('close!');" position="end">
         <div>
-        <flora-register></flora-register>
+        <flora-register (onSave)="reloadUsers(); sidenav.toggle();"></flora-register>
         </div>
     </mat-drawer>
 </mat-drawer-container>

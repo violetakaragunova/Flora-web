@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
@@ -12,6 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
+  @Output() onSave: EventEmitter<string> = new EventEmitter<string>();
+
   constructor(
     private formBuilder: FormBuilder,
     private accountService: AccountService,
@@ -46,10 +48,12 @@ export class RegisterComponent implements OnInit {
     console.log(this.registerForm.value);
     this.accountService.register(this.registerForm.value).subscribe(
       (response) => {
-        this.router.navigateByUrl('/users');
+        this.toastr.success('User was added successfuly');
+        this.onSave.emit();
       },
       (error) => {
         this.toastr.error(error);
+        this.onSave.emit();
       }
     );
   }

@@ -18,7 +18,6 @@ import { PlantNeed } from '../../../models/plantNeed';
 import { DashboardService } from '../../dashboard/dashboard.service';
 import { MonthService } from '../month.service';
 import { NeedService } from '../need.service';
-import { PlantService } from '../plant.service';
 
 @Component({
   selector: 'flora-plant-need-add',

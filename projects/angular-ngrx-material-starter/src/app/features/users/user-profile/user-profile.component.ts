@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { take } from 'rxjs/operators';
 import { User } from '../../../models/user';
 import { UserService } from '../user.service';
 
@@ -15,15 +14,16 @@ export class UserProfileComponent implements OnInit {
   user$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   user: any;
   id: number;
-  constructor(private route: ActivatedRoute, private userService: UserService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.id=Number(this.route.snapshot.paramMap.get('id'));
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.userService.getUser(this.id).subscribe((data: User) => {
       this.user$.next(data);
-      this.user=data;
+      this.user = data;
     });
-    
   }
-
 }

@@ -9,10 +9,7 @@ import {
 import { Plant } from '../../../models/plant';
 import { PlantService } from '../plant.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PlantNeed } from '../../../models/plantNeed';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { HttpClient, HttpEventType } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Room } from '../../../models/room';
 import { RoomService } from '../room.service';
@@ -125,7 +122,7 @@ export class PlantDetailsComponent implements OnInit {
   }
 
   reloadPlants() {
-    console.log("Reload plants Plant Details Component");
+    console.log('Reload plants Plant Details Component');
     this.plantService.currentSelectedPlant.subscribe((result) => {
       this.plant = result;
       this.isAddMode = false;
