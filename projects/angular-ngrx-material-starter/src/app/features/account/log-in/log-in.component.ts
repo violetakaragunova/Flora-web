@@ -39,7 +39,7 @@ export class LogInComponent implements OnInit {
         this.router.navigateByUrl('/home');
       },
       (error) => {
-        this.toastr.error(error);
+        this.toastr.error(error.error.Message);
       }
     );
   }

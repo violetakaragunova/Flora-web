@@ -6,6 +6,10 @@
                 <mat-card-title><input type="text" matInput formControlName="name" placeholder="Name"></mat-card-title>
             </mat-form-field>
             <mat-form-field style="margin-left: 20px;">
+                <mat-label>Family Name</mat-label>
+                <mat-card-title><input type="text" matInput formControlName="plantFamilyName" placeholder="Family Name"></mat-card-title>
+            </mat-form-field>
+            <mat-form-field style="margin-left: 3px;">
                 <mat-label>Room</mat-label>
                 <mat-card-title><mat-select style="height: 5px;" formControlName="roomId" name="roomId">
                     <mat-option *ngFor="let room of rooms$ | async" [value]="room.id">{{room.roomName}}</mat-option>
@@ -13,7 +17,7 @@
                 </mat-card-title>
             </mat-form-field>
         </mat-card-header>
-        <flora-upload-image *ngIf="isAddMode" (convertedImage)="parentEventHandlerFunction($event)"></flora-upload-image>
+        <flora-upload-image style="margin-left: 10px;" *ngIf="isAddMode" (convertedImage)="parentEventHandlerFunction($event)"></flora-upload-image>
         <img *ngIf="!isAddMode" class="centered" mat-card-image src="{{plant?.photoUrl}}"><br>
         <mat-card-content>
             <mat-form-field style="width: 100%;">
@@ -21,7 +25,7 @@
                 <input type="text" matInput formControlName="description" placeholder="Description">
             </mat-form-field>
         </mat-card-content>
-        <div *ngIf="!isAddMode">
+        <div *ngIf="!isAddMode" class="mt-5">
             Plant Needs
             <flora-plant-need [plant]="plant" (onSave)="reloadPlants()"></flora-plant-need><br><br>
         </div>

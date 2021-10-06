@@ -67,7 +67,6 @@ export class DashboardComponent implements OnInit {
   }
 
   apply() {
-    console.log(this.selectedType);
     this.dashboardService
       .getPlants(this.selectedType)
       .subscribe((data: DashboardPlant[]) => {

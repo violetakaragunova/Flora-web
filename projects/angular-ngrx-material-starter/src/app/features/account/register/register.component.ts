@@ -45,14 +45,13 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    console.log(this.registerForm.value);
     this.accountService.register(this.registerForm.value).subscribe(
       (response) => {
         this.toastr.success('User was added successfuly');
         this.onSave.emit();
       },
       (error) => {
-        this.toastr.error(error);
+        this.toastr.error(error.error.Message);
         this.onSave.emit();
       }
     );

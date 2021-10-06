@@ -46,7 +46,6 @@ export class PlantNeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.plantOb.next(this.plant);
-    console.log(this.plant);
   }
 
   deleteNeed() {
@@ -55,7 +54,7 @@ export class PlantNeedComponent implements OnInit {
         this.onSave.emit();
       },
       (error) => {
-        this.toastr.error(error);
+        this.toastr.error(error.error.Message);
       }
     );
   }
@@ -76,13 +75,11 @@ export class PlantNeedComponent implements OnInit {
   }
 
   reloadPlants() {
-    console.log("Reload plants Plant Need Component");
     this.plantService
       .getPlantById(this.plant.id)
       .subscribe((response: Plant) => {
         this.plant=response;
         this.changeDetectorRef.detectChanges();
-        console.log(this.plant);
       });
     this.addNeed = false;
     this.onSave.emit();

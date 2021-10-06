@@ -39,7 +39,6 @@ export class NeedItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.need);
     this.accountService.currentUser$.pipe(take(1)).subscribe((user) => {
       this.user = user;
     });

@@ -45,6 +45,7 @@ export class PlantDetailsComponent implements OnInit {
       name: ['', Validators.required],
       roomId: [null, Validators.required],
       description: ['', Validators.required],
+      plantFamilyName: [''],
       url: ['']
     });
 
@@ -56,7 +57,6 @@ export class PlantDetailsComponent implements OnInit {
         this.isAddMode = true;
       }
       this.AddForm.patchValue(this.plant);
-      console.log(this.plant);
     });
 
     this.roomService.getRooms().subscribe((data: Room[]) => {
@@ -92,7 +92,6 @@ export class PlantDetailsComponent implements OnInit {
       this.AddForm.value['roomId'] = Number(this.AddForm.value['roomId']);
       this.AddForm.value['id'] = this.plant.id;
       this.AddForm.value['url'] = this.plant.photoUrl;
-      console.log(this.AddForm.value);
       this.plantService.updatePlant(this.AddForm.value).subscribe(
         (response) => {
           this.toastr.success('Plant was updated successfuly');
@@ -122,7 +121,6 @@ export class PlantDetailsComponent implements OnInit {
   }
 
   reloadPlants() {
-    console.log('Reload plants Plant Details Component');
     this.plantService.currentSelectedPlant.subscribe((result) => {
       this.plant = result;
       this.isAddMode = false;
