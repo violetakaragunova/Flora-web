@@ -1,7 +1,7 @@
 <div class="main">
     <form [formGroup]="AddForm" class="form">
         <mat-card-header>
-            <mat-form-field>
+            <mat-form-field style="margin-left: 5px;">
                 <mat-label>Name</mat-label>
                 <mat-card-title><input type="text" matInput formControlName="name" placeholder="Name"></mat-card-title>
             </mat-form-field>
@@ -9,7 +9,7 @@
                 <mat-label>Family Name</mat-label>
                 <mat-card-title><input type="text" matInput formControlName="plantFamilyName" placeholder="Family Name"></mat-card-title>
             </mat-form-field>
-            <mat-form-field style="margin-left: 3px;">
+            <mat-form-field style="margin-left: 5px;">
                 <mat-label>Room</mat-label>
                 <mat-card-title><mat-select style="height: 5px;" formControlName="roomId" name="roomId">
                     <mat-option *ngFor="let room of rooms$ | async" [value]="room.id">{{room.roomName}}</mat-option>
